@@ -1,0 +1,26 @@
+@inherits Custom.Hybrid.Razor12
+@using ToSic.Sxc.Services; @* Make it easier to use https://r.2sxc.org/services *@
+
+@{
+  // get helper commands
+	var linkHelper = CreateInstance("LinkHelper.cs");
+}
+
+<div class="app-filelist">
+	<div class="list-group">
+		@foreach (var listItem in AsList(Data)) {
+  		var linkInfo = linkHelper.LinkInfos(listItem);
+			var fullPath = HttpContext.Current.Server.MapPath("~" + listItem.FileLink);
+			var fileSize = new FileInfo(fullPath).Length / 1024;
+
+			<a href="@listItem.FileLink" class="list-group-item list-group-item-action" target="@linkInfo.Window" aria-current="true" @Edit.TagToolbar(listItem)>
+        <i class="co-icon fas @linkInfo.Icon" aria-hidden="true"></i>
+				<span>
+					@listItem.Name (@fileSize kb)
+				</span>
+			</a>
+		}
+	</div>
+</div>
+
+@Html.Partial("./_Assets.cshtml")
