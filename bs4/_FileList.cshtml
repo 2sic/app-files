@@ -6,7 +6,7 @@
 	var linkHelper = CreateInstance("LinkHelper.cs");
 }
 
-<div class="app-filelist" @Edit.TagToolbar(Header, toolbar: new[] { 
+<div class="app-filelist mb-4" @Edit.TagToolbar(Header, toolbar: new[] { 
   "settings&hover=left&autoAddMore=start",
 })>
 	@* call sub-template to show the title with the correct H1-H6 tag *@
@@ -18,7 +18,9 @@
 			var fullPath = HttpContext.Current.Server.MapPath("~" + listItem.FileLink);
 			var fileSize = new FileInfo(fullPath).Length / 1024;
 
-			<a href="@listItem.FileLink" class="list-group-item list-group-item-action" target="@linkInfo.Window" aria-current="true" @Edit.TagToolbar(listItem)>
+			<a href="@listItem.FileLink" class="list-group-item list-group-item-action" target="@linkInfo.Window" aria-current="true" @Edit.TagToolbar(listItem, toolbar: new[] {
+				"-layout"
+			})>
         <i class="co-icon fas @linkInfo.Icon" aria-hidden="true"></i>
 				<span>
 					@listItem.Name (@fileSize kb)

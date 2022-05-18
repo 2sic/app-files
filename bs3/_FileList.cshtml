@@ -19,7 +19,9 @@
 			var fullPath = HttpContext.Current.Server.MapPath("~" + listItem.FileLink);
 			var fileSize = new FileInfo(fullPath).Length / 1024;
 
-			<a href="@listItem.FileLink" class="list-group-item" target="@linkInfo.Window" aria-current="true" @Edit.TagToolbar(listItem)>
+			<a href="@listItem.FileLink" class="list-group-item" target="@linkInfo.Window" aria-current="true" @Edit.TagToolbar(listItem, toolbar: new[] {
+				"-layout"
+			})>
 				<i class="co-icon fas @linkInfo.Icon" aria-hidden="true"></i>
 				<span>
 					@listItem.Name (@fileSize kb)
