@@ -1,33 +1,38 @@
 @inherits Custom.Hybrid.Razor12
-@using ToSic.Sxc.Services; @* Make it easier to use https://r.2sxc.org/services *@
+@using ToSic.Sxc.Services;
 
 @{
   // get helper commands
-	var linkHelper = CreateInstance("LinkHelper.cs");
+	var linkHelper = CreateInstance("../Shared/LinkHelper.cs");
 }
 
 <div class="app-filelist mb-4" @Edit.TagToolbar(Header, toolbar: new[] { 
   "settings&hover=left&autoAddMore=start",
 })>
 	@* call sub-template to show the title with the correct H1-H6 tag *@
-	@Html.Partial("Shared/_Header tag.cshtml", new { Title = Header.Title })
+	@Html.Partial("../Shared/_Header tag.cshtml", new { Title = Header.Title })
 	
 	<div class="list-group">
 		@foreach (var listItem in AsList(Data)) {
+			long fileSize = 0;
   		var linkInfo = linkHelper.LinkInfos(listItem);
-			var fullPath = HttpContext.Current.Server.MapPath("~" + listItem.FileLink);
-			var fileSize = new FileInfo(fullPath).Length / 1024;
+			var isLocalFile = !listItem.FileLink.Contains("http");
 
+			if(isLocalFile) {
+				var fullPath = HttpContext.Current.Server.MapPath("~" + listItem.FileLink);
+				fileSize = new FileInfo(fullPath).Length / 1024;
+			}
+			
 			<a href="@listItem.FileLink" class="list-group-item list-group-item-action" target="@linkInfo.Window" aria-current="true" @Edit.TagToolbar(listItem, toolbar: new[] {
 				"-layout"
 			})>
         <i class="co-icon fas @linkInfo.Icon" aria-hidden="true"></i>
 				<span>
-					@listItem.Name (@fileSize kb)
+					@listItem.Name @(isLocalFile ? "(" + fileSize + "kb)" : "")
 				</span>
 			</a>
 		}
 	</div>
 </div>
 
-@Html.Partial("./Shared/_Assets.cshtml")
+@Html.Partial("../Shared/_Assets.cshtml")
