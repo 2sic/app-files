@@ -1,19 +1,20 @@
-@inherits Custom.Hybrid.Razor12
-@using ToSic.Sxc.Services;
+@* info 2ro *@
+@inherits Custom.Hybrid.Razor14<dynamic, ToSic.Sxc.Services.ServiceKit14>
 @{
+@* info 2ro *@
   // 1. Get Services for Css and Page
-  var pageCss = GetService<Connect.Koi.ICss>();         // Service to get CSS information about the current Theme
-  var pageSvc = GetService<IPageService>();  // Service to set titles etc. on the page
+  // var pageCss = GetService<Connect.Koi.ICss>();         // Service to get CSS information about the current Theme
+  // var pageSvc = GetService<IPageService>();  // Service to set titles etc. on the page
 
   // 2. Include Bootstrap4 if the framework isn't known
-  if (pageCss.IsUnknown) {
-    pageSvc.Activate("Bootstrap4");
+  if (Kit.Css.IsUnknown) {
+    Kit.Page.Activate("Bootstrap4");
   }
 
-  pageSvc.Activate("FontAwesome5");
+  Kit.Page.Activate("FontAwesome5");
 
   // 3. Show warning for admin if koi.json is missing 
-  if (pageCss.IsUnknown && CmsContext.User.IsSiteAdmin) {
+  if (Kit.Css.IsUnknown && CmsContext.User.IsSiteAdmin) {
     <div class='dnnFormMessage dnnFormWarning'>
       @Html.Raw(Connect.Koi.Messages.CssInformationMissing) <br>
       @Html.Raw(Connect.Koi.Messages.OnlyAdminsSeeThis)
@@ -21,5 +22,5 @@
   }
 
   // 4. Include styles of the App
-  <link rel="stylesheet" href="@App.Path/@CmsContext.View.Edition/dist/styles.min.css" @pageSvc.AssetAttributes()/>
+  <link rel="stylesheet" href="@App.Path/@CmsContext.View.Edition/dist/styles.min.css" @Kit.Page.AssetAttributes()/>
 }
