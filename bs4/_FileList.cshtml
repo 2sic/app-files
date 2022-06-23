@@ -1,35 +1,30 @@
-@inherits Custom.Hybrid.Razor12
-@using ToSic.Sxc.Services;
+@inherits Custom.Hybrid.Razor14<dynamic, ToSic.Sxc.Services.ServiceKit14>
 
 @{
   // get helper commands
-	var linkHelper = CreateInstance("../Shared/LinkHelper.cs");
+  var linkHelper = CreateInstance("../Shared/LinkHelper.cs");
 }
 
-<div class="app-filelist mb-4" @Edit.TagToolbar(Header, toolbar: new[] { 
-  "settings&hover=left&autoAddMore=start",
-})>
+<div class="app-filelist mb-4" @Kit.Toolbar.Default(Header).Settings(hover: "left", autoAddMore: "start")>
 	@* call sub-template to show the title with the correct H1-H6 tag *@
 	@Html.Partial("../Shared/_Header tag.cshtml", new { Title = Header.Title })
 	
 	<div class="list-group">
 		@foreach (var listItem in AsList(Data)) {
-			long fileSize = 0;
   		var linkInfo = linkHelper.LinkInfos(listItem);
 			var isLocalFile = !listItem.FileLink.Contains("http");
 
-			if(isLocalFile) {
-				var fullPath = HttpContext.Current.Server.MapPath("~" + listItem.FileLink);
-				fileSize = new FileInfo(fullPath).Length / 1024;
-			}
-			
 			<a href="@listItem.FileLink" class="list-group-item list-group-item-action" target="@linkInfo.Window" aria-current="true" @Edit.TagToolbar(listItem, toolbar: new[] {
 				"-layout"
 			})>
         <i class="co-icon fas @linkInfo.Icon" aria-hidden="true"></i>
-				<span>
-					@listItem.Name @(isLocalFile ? "(" + fileSize + "kb)" : "")
-				</span>
+        <span>
+          @listItem.Name
+          @if (isLocalFile) {
+            var sizeInfo = Kit.Adam.File(listItem.Field("FileLink")).SizeInfo;
+            <text>(@sizeInfo.BestSize.ToString("#.##") @sizeInfo.BestUnit)</text>
+          }
+        </span>
 			</a>
 		}
 	</div>
