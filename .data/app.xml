@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="14.07.03" ExportDate="2022-07-06T10:45:40.3068997+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="14.07.04" ExportDate="2022-07-07T09:27:21.9559162+02:00">
   <Header>
     <App Guid="bbaf55c7-e4d4-4379-bf92-6faab8c33529" />
     <Language Default="en-us" />
@@ -285,7 +285,7 @@
             <Value Key="Notes" Value="&lt;p&gt;The main title of this content-item. Usually shown in larger font at the beginning of the content-block.&amp;nbsp;&lt;/p&gt;" Type="String">
               <Dimension DimensionID="197" ReadOnly="false" />
             </Value>
-            <Value Key="Notes" Value="&lt;p&gt;Der Haupttitel dieses Inhaltsartikels. Wird normalerweise in gr&amp;ouml;&amp;szlig;erer Schrift am Anfang des Inhaltsblocks angezeigt.&lt;/p&gt;" Type="String">
+            <Value Key="Notes" Value="&lt;p&gt;Der Haupttitel dieses Inhaltsartikels. Wird normalerweise in gr&amp;ouml;sserer Schrift am Anfang des Inhaltsblocks angezeigt.&lt;/p&gt;" Type="String">
               <Dimension DimensionID="198" ReadOnly="false" />
             </Value>
             <Value Key="Placeholder" Value="" Type="String">
@@ -412,13 +412,13 @@
       <Value Key="RequiredOqtaneVersion" Value="3.1" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="14.04.00" Type="String">
+      <Value Key="RequiredVersion" Value="14.07.00" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="False" Type="Boolean">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="00.14.07" Type="String">
+      <Value Key="Version" Value="01.00.00" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
     </Entity>
@@ -576,10 +576,10 @@
       <Value Key="Icon" Value="" Type="Hyperlink">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
-      <Value Key="Label" Value="List name" Type="String">
+      <Value Key="Label" Value="Document name" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
-      <Value Key="Label" Value="Listen Name" Type="String">
+      <Value Key="Label" Value="Dokumenten Name" Type="String">
         <Dimension DimensionID="198" ReadOnly="false" />
       </Value>
       <Value Key="Link" Value="" Type="Hyperlink">
