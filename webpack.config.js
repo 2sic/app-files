@@ -6,7 +6,6 @@ module.exports = (env) => {
   return {
     entry: {
       styles: `./${env.style}/styles/${env.style}.scss`,      
-      scripts: './src/ts/index.ts',
     },
     output: {
       path: path.resolve(__dirname, `${env.style}/dist`),
@@ -16,8 +15,9 @@ module.exports = (env) => {
     devtool: 'source-map',
     watch: true,
     stats: {
-      all: false,
-      assets: true
+      warnings: false,
+      cachedModules: false,
+      groupModulesByCacheStatus: false
     },
     cache: {
       type: 'filesystem',

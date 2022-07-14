@@ -26,4 +26,7 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 
 * 2022-05 Version 1.00
   * first release
-  
+* 2022-07
+  * Activated lightspeed
+  * Activated ajax reloading
+  * Updated webpack.config
