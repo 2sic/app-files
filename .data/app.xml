@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="14.07.04" ExportDate="2022-07-14T14:20:21.1394372+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="14.07.05" ExportDate="2022-08-23T17:58:26.4478796+02:00">
   <Header>
     <App Guid="bbaf55c7-e4d4-4379-bf92-6faab8c33529" />
     <Language Default="en-us" />
@@ -14,6 +14,122 @@
     </AttributeSet>
     <AttributeSet StaticName="App-Settings" Name="App-Settings" Description="Stores settings for an app" Scope="System.App" AlwaysShareConfiguration="false">
       <Attributes />
+    </AttributeSet>
+    <AttributeSet StaticName="24eae216-d844-46f0-ad58-5b7581a3b66b" Name="AssetMetadata" Description="" Scope="Default" AlwaysShareConfiguration="false">
+      <Attributes>
+        <Attribute StaticName="Title" Type="String" IsTitle="true">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="8f730a3f-1fdc-441b-9b54-06df70603062" Json="True" KeyNumber="5459">
+            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="Title" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="Description" Type="String" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="d150f34b-fc3f-48e8-8ae8-b45cbb0c4978" Json="True" KeyNumber="5460">
+            <Value Key="InputType" Value="string-wysiwyg" Type="String" />
+            <Value Key="Name" Value="Description" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="GroupVisual" Type="Empty" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="ab3f143a-5560-4145-ae95-94e59c017863" Json="True" KeyNumber="5461">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="empty-default" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="GroupVisual" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;You can use an icon to enhance the visualization. If you dont use an icon, it will automatically pick an icon for you based on the thing you're linking (so that documents get a document icon, etc.)&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="0db824ed-7d5e-412e-92ed-c00e4dc5a56a" Json="True" KeyNumber="5461">
+            <Value Key="DefaultCollapsed" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="Icon" Type="String" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="3f7b6b38-9925-4fdd-9039-cebdad44ac79" Json="True" KeyNumber="5462">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-font-icon-picker" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Icon" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;The icon is not required. Templates showing icons will&amp;nbsp;automatically pick another icon based on the link, if you don't specify an icon.&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="34bcac96-7fa8-43df-8cab-6c464c2f8ddd" Json="True" KeyNumber="5462">
+            <Value Key="DropdownValues" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-font-icon-picker" AttributeSetName="@string-font-icon-picker" EntityGUID="9f82522c-fb77-4e08-a9a2-bbc9111ebf8c" Json="True" KeyNumber="5462">
+            <Value Key="CssPrefix" Value=".fa-" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Files" Value="[App:Path]/Icons/fontawesome/css/fontawesome-nobrands.min.css" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="PreviewCss" Value="fas" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
+      </Attributes>
     </AttributeSet>
     <AttributeSet StaticName="81b39bca-0bde-4aa3-967b-d97647bb0adf" Name="File" Description="" Scope="Default" AlwaysShareConfiguration="false">
       <Attributes>
@@ -257,6 +373,101 @@
         </Attribute>
       </Attributes>
     </AttributeSet>
+    <AttributeSet StaticName="34c7f45a-64f5-4680-9118-01af9867742e" Name="Folder" Description="" Scope="Default" AlwaysShareConfiguration="false">
+      <Attributes>
+        <Attribute StaticName="Title" Type="String" IsTitle="true">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="ecd58f60-1d6c-4557-afbc-e262eb055b26" Json="True" KeyNumber="5456">
+            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="Title" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="Description" Type="String" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="8f487f85-8ba4-4d88-b37f-55ac134bb2df" Json="True" KeyNumber="5457">
+            <Value Key="InputType" Value="string-wysiwyg" Type="String" />
+            <Value Key="Name" Value="Description" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="Files" Type="Hyperlink" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="86d342c5-baf2-415c-bfc0-bdec14bb2439" Json="True" KeyNumber="5458">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="hyperlink-library" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Files" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Hyperlink" AttributeSetName="@Hyperlink" EntityGUID="9bef3eaa-8e55-4ee4-8244-34c9bfe00d2a" Json="True" KeyNumber="5458">
+            <Value Key="Buttons" Value="adam,more" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultDialog" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="FileFilter" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="Paths" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="ServerResourceMapping" Value="" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="ShowAdam" Value="True" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="ShowFileManager" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="ShowImageManager" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="ShowPagePicker" Value="False" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@hyperlink-library" AttributeSetName="@hyperlink-library" EntityGUID="4de38051-1527-4399-8ed4-97521f58b328" Json="True" KeyNumber="5458">
+            <Value Key="AllowAssetsInRoot" Value="True" Type="Boolean">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="FolderDepth" Value="2" Type="Number">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+            <Value Key="MetadataContentTypes" Value="AssetMetadata" Type="String">
+              <Dimension DimensionID="197" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
+      </Attributes>
+    </AttributeSet>
     <AttributeSet StaticName="7e2676d8-00a6-474a-9bdb-80d4196af780" Name="ListHeader" Description="" Scope="Default" AlwaysShareConfiguration="false">
       <Attributes>
         <Attribute StaticName="Title" Type="String" IsTitle="true">
@@ -418,7 +629,7 @@
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="01.00.01" Type="String">
+      <Value Key="Version" Value="01.01.00" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
     </Entity>
@@ -661,16 +872,192 @@
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
     </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="52595f69-0da7-4859-9bad-3d5206d14c80" Json="True">
+      <Value Key="ContentDemoEntity" Value="0ddaf078-7ffe-48ed-a91e-444d0da61725" Type="Entity" />
+      <Value Key="ContentTypeStaticName" Value="34c7f45a-64f5-4680-9118-01af9867742e" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Icon" Value="" Type="Hyperlink">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Identifier" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="IsHidden" Value="False" Type="Boolean">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="ListContentTypeStaticName" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="ListPresentationTypeStaticName" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Location" Value="Site" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Name" Value="Folder" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Path" Value="bs5/_Folder.cshtml" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="PresentationTypeStaticName" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="PublishData" Value="False" Type="Boolean">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="SearchIndexingDisabled" Value="False" Type="Boolean">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="SearchIndexingStreams" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="StreamsToPublish" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Type" Value="C# Razor" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="UseForList" Value="False" Type="Boolean">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="ViewController" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="ViewNameInUrl" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="34c7f45a-64f5-4680-9118-01af9867742e" AttributeSetName="Folder" EntityGUID="0ddaf078-7ffe-48ed-a91e-444d0da61725">
+      <Value Key="Description" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Files" Value="" Type="Hyperlink" />
+      <Value Key="Title" Value="Demo File folder" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="6ed55280-857c-432e-8f1b-7d0ea3a0e7b3" Json="True">
+      <Value Key="Template" Value="8e158d42-0cbc-4ffb-bcca-68cf2b5e9517" Type="Entity" />
+    </Entity>
+    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="24eae216-d844-46f0-ad58-5b7581a3b66b" AttributeSetName="AssetMetadata" EntityGUID="3ce4deda-5baa-4000-ba4c-967da42a36ee" KeyString="file:6243">
+      <Value Key="Description" Value="&lt;p&gt;This is a demo description.&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Icon" Value="fa-file" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="24eae216-d844-46f0-ad58-5b7581a3b66b" AttributeSetName="AssetMetadata" EntityGUID="9b7dfbbb-bf40-48cc-8235-f8bb8d10d3a5" KeyString="file:6241">
+      <Value Key="Description" Value="&lt;p&gt;A file which should be in the &quot;Folder1&quot; which should be in the root folder&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="DemoFile1.1" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="24eae216-d844-46f0-ad58-5b7581a3b66b" AttributeSetName="AssetMetadata" EntityGUID="28fd6e1b-e72f-47be-871c-9988479ce0d3" KeyString="file:6242">
+      <Value Key="Description" Value="&lt;p&gt;A file which should be in the &quot;Folder1&quot; which should be on the root level&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="DemoFile1.2" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="24eae216-d844-46f0-ad58-5b7581a3b66b" AttributeSetName="AssetMetadata" EntityGUID="51e85ab0-57fd-4376-b52f-9a73f84dc1c0" KeyString="file:6240">
+      <Value Key="Description" Value="&lt;p&gt;A file which should be in the &quot;Folder2&quot; which should be on the root level&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="DemoFile2.1" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="5feec6f9-548e-4435-9781-b1f22e000c45" Json="True">
+      <Value Key="Template" Value="8e158d42-0cbc-4ffb-bcca-68cf2b5e9517" Type="Entity" />
+    </Entity>
+    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="24eae216-d844-46f0-ad58-5b7581a3b66b" AttributeSetName="AssetMetadata" EntityGUID="13341451-388b-491b-a0cc-c3e4b088e46a" KeyString="file:6244">
+      <Value Key="Description" Value="&lt;p&gt;This image should be on the root level.&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="RiverImage" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="24eae216-d844-46f0-ad58-5b7581a3b66b" AttributeSetName="AssetMetadata" EntityGUID="0fb63f89-8e81-4965-9963-4fb388cf2180" KeyString="file:6245">
+      <Value Key="Description" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Icon" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="24eae216-d844-46f0-ad58-5b7581a3b66b" AttributeSetName="AssetMetadata" EntityGUID="02467cb4-12a5-445c-86c7-8f7f4ee00ce0" KeyString="file:6251">
+      <Value Key="Description" Value="&lt;p&gt;This is a demo description.&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Icon" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="DemoFile 1.1" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="24eae216-d844-46f0-ad58-5b7581a3b66b" AttributeSetName="AssetMetadata" EntityGUID="14f92075-28ea-44c2-913e-df0d04b0e9eb" KeyString="file:6252">
+      <Value Key="Description" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Icon" Value="fa-ad" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="DemoFile 1.2" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="24eae216-d844-46f0-ad58-5b7581a3b66b" AttributeSetName="AssetMetadata" EntityGUID="3fc5ea5a-79e9-4abe-9b00-7507db1e7aa6" KeyString="file:6250">
+      <Value Key="Description" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Icon" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="DemoFile 2.1" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="c20dc3e7-6fc0-4a22-be1b-ada6a14af897" Json="True">
+      <Value Key="Content" Value="0ddaf078-7ffe-48ed-a91e-444d0da61725" Type="Entity" />
+      <Value Key="Presentation" Value="null" Type="Entity" />
+      <Value Key="Template" Value="52595f69-0da7-4859-9bad-3d5206d14c80" Type="Entity" />
+    </Entity>
   </Entities>
   <PortalFiles>
     <File Id="6157" RelativePath="adam\FileList\siiZSMm5D0mxiCdgpaVZLg\Link\dummy.pdf" />
     <File Id="6158" RelativePath="adam\FileList\g90OD9I_KkSQw80uyjtd6g\FileLink\dummy.pdf" />
     <File Id="6159" RelativePath="adam\FileList\g-zrrIfbQUWFCA958qdUbA\FileLink\dummy.pdf" />
+    <File Id="6243" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFileRootFileName.txt" />
+    <File Id="6254" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFolderRoot\DemoFileWord.docx" />
+    <File Id="6245" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFolderRoot\DemoImageFileName.jpg" />
+    <File Id="6251" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFolderRoot\DemoFolder1\DemoFile1.1.txt" />
+    <File Id="6252" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFolderRoot\DemoFolder1\DemoFile1.2.txt" />
+    <File Id="6250" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFolderRoot\DemoFolder2\DemoFile2.1.txt" />
+    <File Id="6253" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFolderRoot\DemoFolder2\DemoFilePDF2.2.pdf" />
   </PortalFiles>
   <PortalFolders>
     <Folder Id="13734" RelativePath="adam/FileList/siiZSMm5D0mxiCdgpaVZLg/Link/" />
     <Folder Id="13736" RelativePath="adam/FileList/g90OD9I_KkSQw80uyjtd6g/FileLink/" />
     <Folder Id="13738" RelativePath="adam/FileList/g-zrrIfbQUWFCA958qdUbA/FileLink/" />
+    <Folder Id="13804" RelativePath="adam/Files/ePDaDf5_7UipHkRNDaYXJQ/Files/" />
+    <Folder Id="13806" RelativePath="adam/Files/ePDaDf5_7UipHkRNDaYXJQ/Files/DemoFolderRoot/" />
+    <Folder Id="13808" RelativePath="adam/Files/ePDaDf5_7UipHkRNDaYXJQ/Files/DemoFolderRoot/DemoFolder1/" />
+    <Folder Id="13807" RelativePath="adam/Files/ePDaDf5_7UipHkRNDaYXJQ/Files/DemoFolderRoot/DemoFolder2/" />
     <Folder Id="13794" RelativePath="adam/Files/" />
+    <Folder Id="13797" RelativePath="adam/Files/ePDaDf5_7UipHkRNDaYXJQ/" />
   </PortalFolders>
 </SexyContent>
