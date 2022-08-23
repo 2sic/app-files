@@ -19,6 +19,8 @@ public class LinkHelper: Custom.Hybrid.Code14
     // process remaining properties, in case we want to override them with automatic stuff
     if(found) {
       var linkExt = Path.GetExtension(link.ToLower());
+      // get the right fontawesome class ending for the file type
+      var filetypeIcon = iconEnding(linkExt);
       var isDoc = fileExtensions.Contains(linkExt);
 
       // try to find out if it's a local link
@@ -31,7 +33,7 @@ public class LinkHelper: Custom.Hybrid.Code14
       // but only if no icon was specified already
       if(!Text.Has(icon))
         icon = isDoc
-        ? "fas fa-file" // if doc, then file-icon
+        ? "fas fa-file" + filetypeIcon // if doc, then file-icon + add the file ending for the right file type
         : (isInternal
           ? "fas fa-caret-right" // else if internal, use play-button
           : "fas fa-external-link-alt");   // else if external, show "open new window"
@@ -47,5 +49,21 @@ public class LinkHelper: Custom.Hybrid.Code14
       Icon = icon,
       Window = window,
     });
+  }
+
+  public string iconEnding(string linkExt){
+    
+    if(linkExt == ".pdf")
+      return "-pdf";
+    else if(linkExt == ".doc" || linkExt == ".docx")
+      return "-word";
+    else if(linkExt == ".xls" || linkExt == ".xlsx")
+      return "-excel";
+    else if(linkExt == ".ppt" || linkExt == ".pptx" || linkExt == ".ppsx")
+      return "-powerpoint";
+    else if(linkExt == ".txt")
+      return "-alt";
+    else 
+      return "";
   }
 }

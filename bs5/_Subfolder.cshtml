@@ -1,0 +1,51 @@
+@inherits Custom.Hybrid.Razor14
+@using System.Text.RegularExpressions;
+@using ToSic.Razor.Blade;
+@{
+  var Folder = DynamicModel.Folder as ToSic.Sxc.Adam.IFolder;
+
+  var level = DynamicModel.Level;
+
+  var linkHelper = CreateInstance("../Shared/LinkHelper.cs");
+
+	var fileMetadataToolbar = Kit.Toolbar.Empty().Edit().Add();
+}
+<a class="list-group-item ps-@level folder" href="#folder-@Folder.Id" data-folder-id="Folder.Id" data-folder-level="@level" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="folder-@Folder.Id">
+  <i class="co-icon fas fa-folder" aria-hidden="true"></i>
+  <strong>@Folder.Name</strong>
+</a>
+
+@{
+  level = level + 1;
+}
+<div id="folder-@Folder.Id" class="collapse">
+  @if(AsList(Folder.Files) != null){
+    foreach(var file in AsList(Folder.Files)){
+      var fileTitle = Text.First(file.Metadata.Title, file.FullName);
+      var linkInfo = linkHelper.LinkInfos(file.Path, "", file.Metadata.Icon);
+
+      <a href="@file.Url" class="list-group-item list-group-item-action ps-@level" aria-current="true" @fileMetadataToolbar.For(file.Metadata)>
+        <i class="co-icon fas @linkInfo.Icon" aria-hidden="true"></i>
+        <span>
+          <strong>@fileTitle</strong>
+          @{
+            var sizeInfo = Kit.Adam.File(file.Id).SizeInfo;
+          }
+          @if(sizeInfo.BestSize > 0){
+            <text>(@sizeInfo.BestSize.ToString("#.##") @sizeInfo.BestUnit)</text>
+          } else {
+            <text>(0 KB)</text>
+          }
+          <span class="description-wrapper">
+            @Html.Raw(file.Metadata.Description)
+          </span>
+        </span>
+      </a>
+    }
+  }
+  @if(AsList(Folder.Files) != null){
+    foreach(var folder in AsList(Folder.Folders)){
+      @Html.Partial("_Subfolder.cshtml", new { Folder = folder, Level = level })
+    }
+  }
+</div>

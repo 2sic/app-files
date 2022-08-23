@@ -30,3 +30,5 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Activated lightspeed
   * Activated ajax reloading
   * Updated webpack.config
+* 2022-08 v01.01.00
+  * Added a folder view

@@ -1,0 +1,39 @@
+@inherits Custom.Hybrid.Razor14
+
+@{
+  // get helper commands
+  var linkHelper = CreateInstance("../Shared/LinkHelper.cs");
+
+	var fileMetadataToolbar = Kit.Toolbar.Empty().Edit().Add();
+  
+  Kit.Page.Activate("Fontawesome5");
+}
+
+<div class="app-filelist mb-4" @Kit.Toolbar.Default(Content)>
+  <h1>@Content.Title</h1>
+  <div class="list-group">
+    @foreach (var file in AsList(AsAdam(Content,"Files").Files as object)) {
+      <a href="@file.Url" class="list-group-item list-group-item-action pl-2" aria-current="true" @fileMetadataToolbar.For(file.Metadata)>
+        <i class="co-icon fas @file.Metadata.Icon" aria-hidden="true"></i>
+        <span>
+          <strong>@file.Metadata.Title</strong>
+          @{
+            var sizeInfo = Kit.Adam.File(file.Id).SizeInfo;
+          }
+          @if(sizeInfo.BestSize > 0){
+            <text>(@sizeInfo.BestSize.ToString("#.##") @sizeInfo.BestUnit)</text>
+          }
+          <span class="description-wrapper">
+            @Html.Raw(file.Metadata.Description)
+          </span>
+        </span>
+      </a>
+    }
+
+    @foreach(var folder in AsList(AsAdam(Content, "Files").Folders as object)){
+      @Html.Partial("_Subfolder.cshtml", new { Folder = folder, Level = 2 })
+    }
+  </div>
+</div>
+
+@Html.Partial("../Shared/_Assets.cshtml")

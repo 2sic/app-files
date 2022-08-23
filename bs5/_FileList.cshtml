@@ -7,12 +7,12 @@
 	var listItemToolbar = Kit.Toolbar.Default().Layout("-");
 }
 
-<div class="app-filelist mb-4" @Kit.Toolbar.Default(Header).Settings(hover: "left", autoAddMore: "start")>
+<div class="app-filelist mb-4" @Kit.Toolbar.Default(Header)>
   @* call sub-template to show the title with the correct H1-H6 tag *@
   @Html.Partial("../Shared/_Header tag.cshtml", new { Title = Header.Title })
   
   <div class="list-group">
-    @foreach (var listItem in AsList(Data)) {
+    @foreach (var listItem in AsList(Data)) {      
       var linkInfo = linkHelper.LinkInfos(listItem);
       var isLocalFile = !listItem.FileLink.Contains("http");
 
