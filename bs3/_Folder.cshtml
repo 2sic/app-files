@@ -1,4 +1,5 @@
 @inherits Custom.Hybrid.Razor14
+@using ToSic.Razor.Blade;
 
 @{
   // get helper commands
@@ -13,10 +14,12 @@
   <h1>@Content.Title</h1>
   <div class="list-group">
     @foreach (var file in AsList(AsAdam(Content,"Files").Files as object)) {
+      var fileTitle = Text.First(file.Metadata.Title, file.Name);
+
       <a href="@file.Url" class="list-group-item list-group-item-action ps-2" aria-current="true" @fileMetadataToolbar.For(file.Metadata)>
         <i class="co-icon fas @file.Metadata.Icon" aria-hidden="true"></i>
         <span>
-          <strong>@file.Metadata.Title</strong>
+          <strong>@fileTitle</strong>
           @{
             var sizeInfo = Kit.Adam.File(file.Id).SizeInfo;
           }
