@@ -1,11 +1,10 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
+
 @{
   // get helper commands
   var linkHelper = CreateInstance("../Shared/LinkHelper.cs");
 
-  Kit.Page.Activate("Fontawesome5");
-  
 	var fileMetadataToolbar = Kit.Toolbar.Empty().Edit().Add();
 }
 

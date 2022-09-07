@@ -6,7 +6,9 @@
     Kit.Page.Activate("Bootstrap4");
   }
 
+  Kit.Page.Activate("turnOn"); // see https://r.2sxc.org/turnon
   Kit.Page.Activate("FontAwesome5");
+
 
   // 3. Show warning for admin if koi.json is missing 
   if (Kit.Css.IsUnknown && CmsContext.User.IsSiteAdmin) {
@@ -20,5 +22,7 @@
   <link rel="stylesheet" href="@App.Path/@CmsContext.View.Edition/dist/styles.min.css" @Kit.Page.AssetAttributes()/>
 
   // 5. Include scritps of the App
-  <script src="@App.Path/@CmsContext.View.Edition/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script>
+  <turnOn turn-on='{ "run": "window.appFiles.init()"}'></turnOn>
+  <script src="@App.Path/@CmsContext.View.Edition/dist/scripts.min.js"></script>
+  @* <script src="@App.Path/@CmsContext.View.Edition/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script> *@
 }

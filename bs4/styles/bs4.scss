@@ -9,11 +9,7 @@
 @import "sass-comments.scss";
 
 // Include needed functions and mixins from Bootstrap 4
-@import "../../node_modules/bootstrap/scss/_functions";
-
-// If you want to use breakpoints, you have to use the mixins and breakpoint sass 
-// @import "../../node_modules/bootstrap/scss/mixins";
-// @import "../../node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "../../node_modules/bs4/scss/_functions";
 
 // Choose which variables file you want to use
 // Either the one from the skin. To use the skin variables, adjust the path as needed
@@ -23,6 +19,12 @@
 
 // Now the standard bootstrap functionality
 // It will use our variables
-@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bs4/scss/variables";
+
+// If you want to use breakpoints, you have to use the mixins and breakpoint sass 
+// @import "../../node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "../../node_modules/bs4/scss/_mixins";
+@import "../../node_modules/bs4/scss/_transitions";
+@import "../../node_modules/bs4/scss/_dropdown";
 
 @import "_style.scss"; // General CSS stuff for everything

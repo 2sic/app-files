@@ -1,36 +1,52 @@
+function initAppFiles() {
+  const folders = document.querySelectorAll('[data-folder-id]');
 
-// checkCollapseState();
+  folders.forEach((folder) => {
+    folder.addEventListener('click', () => {
+      const f = folder as HTMLAnchorElement;
+      const url = new URL(f.href);
+      window.location.hash = url.hash;
+    });
+  });
+  
+  let currentUrlHash = new URL(window.location.href).hash;
+  
+  // if(currentUrlHash) {
+  //   let hash = currentUrlHash.replace("#","");
+  
+  //   var hashFolder = document.getElementById(hash);
+  //   openCollapse(hashFolder)
+  // }
+  
+  // function openCollapse(elem: HTMLElement) {
+  
+  //   var bsCollapse = new (bootstrap as any).Collapse(elem);
+  
+  //   // bsCollapse.show();
+  
+  //   let parentCollapse = elem.closest('.collapse') as HTMLElement;
+  //   if(parentCollapse) {
+  //     openCollapse(parentCollapse);
+  //   }
+  // }
 
-// function checkCollapseState(){
-//   var queryString = window.location.search;
-//   console.log("the url is:" + queryString);
-//   const urlParams = new URLSearchParams(queryString)
-// }
+  if(currentUrlHash) {
+    var hashFolder = document.querySelector(`a[href='${currentUrlHash}']`);
+    openCollapse(hashFolder)
+  }
+  
+  function openCollapse(elem: Element) {
+    (elem as HTMLElement).click();
+  
+    let parentCollapse = elem.parentElement.previousElementSibling;
+    if(parentCollapse && parentCollapse.classList.contains('folder')) {
+      openCollapse(parentCollapse);
+    }
+  }  
+}
 
-// var allFolders = document.querySelectorAll(".folder");
-// allFolders.forEach(element => {
-//   // element.addEventListener("click", setUrlParameters(element));
-// });
+// so it can be called from the HTML when content re-initializes dynamically
+const winAny = (window as any);
+winAny.appFiles ??= {};
+winAny.appFiles.init ??= initAppFiles;
 
-// var folders: { [id: number] : number };
-
-// function setUrlParameters(folder: any){ 
-//   var folderLevel = folder.folderId;
-//   var folderId = folder.folderLevel;
-//   console.log("set started")
-//   if(folderId in folders){
-//     delete folders[folderId];
-//   } else {
-//     for(var singleFolder in folders){
-//       if(folders[singleFolder] < folderLevel){
-//         delete folders[singleFolder];
-//         folders[folderId] = folderLevel;
-//       } else if(folders[singleFolder] == folderLevel){
-//         folders[folderId] = folderLevel
-//       }
-//     }
-//   }
-//   var paramters = "arg=1";
-//   var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + folders; 
-//   window.history.pushState({ path: refresh }, '', refresh);
-// }

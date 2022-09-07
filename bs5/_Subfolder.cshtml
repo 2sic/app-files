@@ -10,7 +10,7 @@
 
 	var fileMetadataToolbar = Kit.Toolbar.Empty().Edit().Add();
 }
-<a class="list-group-item ps-@level folder" href="#folder-@Folder.Id" data-folder-id="Folder.Id" data-folder-level="@level" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="folder-@Folder.Id">
+<a href="#folder-@Folder.Id" class="list-group-item ps-@level folder" data-folder-id="@Folder.Id" data-folder-level="@level" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="folder-@Folder.Id">
   <i class="co-icon fas fa-folder" aria-hidden="true"></i>
   <strong>@Folder.Name</strong>
 </a>
