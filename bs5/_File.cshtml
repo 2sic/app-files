@@ -1,0 +1,20 @@
+@inherits Custom.Hybrid.Razor14
+@using ToSic.Razor.Blade;
+
+@{
+  var file = DynamicModel.File;
+  var icon = DynamicModel.Icon;
+  var isLocalFile = !file.Url.Contains("http");
+  var fileTitle = Text.First(file.Metadata.Title, file.Name);
+
+}
+<i class="co-icon fas @icon" aria-hidden="true"></i>
+@fileTitle
+@if (isLocalFile) {
+  var sizeInfo = file.Id != null ? Kit.Adam.File(file.Id).SizeInfo : Kit.Adam.File(file.Field("Url")).SizeInfo;
+  if(sizeInfo.BestSize > 0){
+    <text>(@sizeInfo.BestSize.ToString("#.##") @sizeInfo.BestUnit)</text>
+  } else {
+    <text>(0 KB)</text>
+  }
+}

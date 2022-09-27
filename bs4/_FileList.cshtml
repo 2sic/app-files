@@ -14,17 +14,9 @@
 	<div class="list-group">
 		@foreach (var listItem in AsList(Data)) {
   		var linkInfo = linkHelper.LinkInfos(listItem);
-			var isLocalFile = !listItem.FileLink.Contains("http");
 
 			<a href="@listItem.FileLink" class="list-group-item list-group-item-action" target="@linkInfo.Window" aria-current="true" @listItemToolbar.For(listItem)>
-        <i class="co-icon fas @linkInfo.Icon" aria-hidden="true"></i>
-        <span>
-          @listItem.Name
-          @if (isLocalFile) {
-            var sizeInfo = Kit.Adam.File(listItem.Field("FileLink")).SizeInfo;
-            <text>(@sizeInfo.BestSize.ToString("#.##") @sizeInfo.BestUnit)</text>
-          }
-        </span>
+				@Html.Partial("_File.cshtml", new { File = listItem, Icon = linkInfo.Icon } )
 			</a>
 		}
 	</div>

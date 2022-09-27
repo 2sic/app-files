@@ -6,7 +6,7 @@ using ToSic.Razor.Blade;
 public class LinkHelper: Custom.Hybrid.Code14
 {
   public dynamic LinkInfos(dynamic item) {
-    return LinkInfos(item.FileLink, item.Window, item.Icon);
+    return LinkInfos(item.Url, item.Window, item.Icon);
   }
   
   // check a link, prepare target window, icon etc. based on various settings
