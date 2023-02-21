@@ -32,3 +32,6 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Updated webpack.config
 * 2022-08 v01.01.00
   * Added a folder view
+* 2023-02 v01.02.00
+  * Refactoring
+  * Uses 2sxc 15 Standards

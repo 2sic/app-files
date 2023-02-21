@@ -7,12 +7,12 @@
 }
 
 <div class="app-filelist mb-4" @Kit.Toolbar.Default(Content)>
-  @Html.Partial("../Shared/_Header tag.cshtml", new { HeadingType = Content.HeadingType, Title = Content.Title })
+  @Html.Partial("../Shared/Header tag.cshtml", new { HeadingType = Content.HeadingType, Title = Content.Title })
 
   <div class="list-group">
     @foreach (var file in AsList(AsAdam(Content,"Files").Files as object)) {
       <a href="@file.Url" class="list-group-item list-group-item-action ps-2" aria-current="true" @fileMetadataToolbar.For(file.Metadata)>
-        @Html.Partial("_File.cshtml", new { File = file, Icon = file.Metadata.Icon } )
+        @Html.Partial("File.cshtml", new { File = file, Icon = file.Metadata.Icon } )
 
         <span class="description-wrapper">
           @Html.Raw(file.Metadata.Description)
@@ -21,9 +21,9 @@
     }
 
     @foreach(var folder in AsList(AsAdam(Content, "Files").Folders as object)){
-      @Html.Partial("_Subfolder.cshtml", new { Folder = folder, Level = 2 })
+      @Html.Partial("Subfolder.cshtml", new { Folder = folder, Level = 2 })
     }
   </div>
 </div>
 
-@Html.Partial("../Shared/_Assets.cshtml")
+@Html.Partial("../Shared/Assets.cshtml")
