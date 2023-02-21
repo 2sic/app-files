@@ -2,6 +2,7 @@
 @using ToSic.Razor.Blade;
 
 @{
+  // Get the File and Icon from the DynamicModel (parameter passed to this partial Razor)
   var file = DynamicModel.File;
   var icon = DynamicModel.Icon;
   var isLocalFile = !file.Url.Contains("http");

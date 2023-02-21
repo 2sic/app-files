@@ -2,12 +2,13 @@
 @using ToSic.Razor.Blade;
 
 @{
+  // Get the File and Icon from the DynamicModel (parameter passed to this partial Razor)
   var file = DynamicModel.File;
   var icon = DynamicModel.Icon;
   var isLocalFile = !file.Url.Contains("http");
   var fileTitle = Text.First(file.Metadata.Title, file.Name);
-
 }
+
 <i class="co-icon fas @icon" aria-hidden="true"></i>
 @fileTitle
 @if (isLocalFile) {

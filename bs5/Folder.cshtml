@@ -2,7 +2,8 @@
 @using ToSic.Razor.Blade;
 
 @{
-	var fileMetadataToolbar = Kit.Toolbar.Empty().Edit().Add();
+  // Toolbar with only Edit Function
+	var fileMetadataToolbar = Kit.Toolbar.Empty().Edit();
 }
 
 <div class="app-filelist mb-4" @Kit.Toolbar.Default(Content)>

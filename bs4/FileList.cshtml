@@ -3,8 +3,9 @@
 @{
   // get helper commands
   var linkHelper = CreateInstance("../Shared/LinkHelper.cs");
-
-	var listItemToolbar = Kit.Toolbar.Default().Layout("-");
+  
+  // Toolbar without Layout Button
+  var listItemToolbar = Kit.Toolbar.Default().Layout("-");
 }
 
 <div class="app-filelist mb-4" @Kit.Toolbar.Default(Header)>
