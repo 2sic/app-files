@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="@App.Path/@CmsContext.View.Edition/dist/styles.min.css" @Kit.Page.AssetAttributes()/>
 
   // 5. Include scritps of the App
+  @* When the page is ready, run glossary init JS *@
   @Kit.Page.TurnOn("window.appFiles.init()")
   <script src="@App.Path/@CmsContext.View.Edition/dist/scripts.min.js"></script>
   @* <script src="@App.Path/@CmsContext.View.Edition/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script> *@
