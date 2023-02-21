@@ -8,7 +8,7 @@ CMS Simple File List.
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Swiper v2.01 requires 2sxc v12.05
+| 2sxc                | ✅    | Swiper v2.01 requires 2sxc v15.03
 | Dnn                 | ✅    | For v7, v8 and v9
 | Oqtane 2            | ✅    | Requires v2.02
 | No jQuery           | ✅    | Since v 2.01
@@ -24,14 +24,16 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 
 ## History
 
-* 2022-05 Version 1.00
+* Version 1.00 2022-05 
   * first release
 * 2022-07
   * Activated lightspeed
   * Activated ajax reloading
   * Updated webpack.config
-* 2022-08 v01.01.00
+* v01.01.00 2022-08 
   * Added a folder view
-* 2023-02 v01.02.00
-  * Refactoring
-  * Uses 2sxc 15 Standards
+* v.01.02.00 2023-02
+    * Replaced Tag.Custom with `Kit.HtmlTags`
+    * Replaced turnOn Tag with `Kit.Page.TurnOn`
+    * Removed _ from Filenames
+
