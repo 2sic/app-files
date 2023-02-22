@@ -8,7 +8,7 @@ CMS Simple File List.
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Swiper v2.01 requires 2sxc v15.03
+| 2sxc                | ✅    | Swiper v2.01 requires 2sxc v15.04
 | Dnn                 | ✅    | For v7, v8 and v9
 | Oqtane 2            | ✅    | Requires v2.02
 | No jQuery           | ✅    | Since v 2.01
@@ -36,4 +36,5 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
     * Replaced Tag.Custom with `Kit.HtmlTags`
     * Replaced turnOn Tag with `Kit.Page.TurnOn`
     * Removed _ from Filenames
+    * Code in one file the bs5, less duplicated code
 

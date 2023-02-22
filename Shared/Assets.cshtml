@@ -1,25 +1,23 @@
-@* info 2ro *@
 @inherits Custom.Hybrid.Razor14
-@{
-  // 3. Show warning for admin if koi.json is missing 
-  if (Kit.Css.IsUnknown && CmsContext.User.IsSiteAdmin) {
-    <div class='dnnFormMessage dnnFormWarning'>
-      @Html.Raw(Connect.Koi.Messages.CssInformationMissing) <br>
-      @Html.Raw(Connect.Koi.Messages.OnlyAdminsSeeThis)
-    </div>
-  }
 
-  @Kit.Page.Activate("FontAwesome5");
-
-  @* Include bootstrap 5 if the framework isn't known - then this file is still called, and we add Bootstrap to the page *@
-  @Kit.Page.Activate(condition: Kit.Css.IsUnknown, features: "Bootstrap5")
-
-  // 4. Include styles of the App
-  <link rel="stylesheet" href="@App.Path/@CmsContext.View.Edition/dist/styles.min.css" @Kit.Page.AssetAttributes()/>
-
-  // 5. Include scritps of the App
-  @* When the page is ready, run glossary init JS *@
-  @Kit.Page.TurnOn("window.appFiles.init()")
-  <script src="@App.Path/@CmsContext.View.Edition/dist/scripts.min.js"></script>
-  @* <script src="@App.Path/@CmsContext.View.Edition/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script> *@
+@* 1. Show warning for admin if koi.json is missing  *@
+@if (Kit.Css.IsUnknown && CmsContext.User.IsSiteAdmin) {
+  <div class='dnnFormMessage dnnFormWarning'>
+    @Html.Raw(Connect.Koi.Messages.CssInformationMissing) <br>
+    @Html.Raw(Connect.Koi.Messages.OnlyAdminsSeeThis)
+  </div>
 }
+
+@* Include FontAwesome5  *@
+@Kit.Page.Activate("FontAwesome5")
+
+@* Include bootstrap 5 if the framework isn't known - then this file is still called, and we add Bootstrap to the page *@
+@Kit.Page.Activate(condition: Kit.Css.IsUnknown, features: "Bootstrap5")
+
+@* 2. Include styles of the App *@
+<link rel="stylesheet" href="@CmsContext.View.Path/dist/styles.min.css" @Kit.Page.AssetAttributes()>
+
+@* 3. Include scritps of the App *@
+@* When the page is ready, run glossary init JS *@
+@Kit.Page.TurnOn("window.appFiles.init()")
+<script src="@CmsContext.View.Path/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script>

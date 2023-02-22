@@ -1,0 +1,52 @@
+@inherits Custom.Hybrid.Razor14
+@using ToSic.Razor.Blade;
+
+@* --- This is the Bootstrap5 Edition of the Files --- *@
+@* Show Subfolder from folders including all Files *@
+@{
+  var linkHelper = CreateInstance("../Shared/LinkHelper.cs");
+
+  // Get the Folder and level from the DynamicModel (parameter passed to this partial Razor)
+  var Folder = DynamicModel.Folder as ToSic.Sxc.Adam.IFolder;
+  var level = DynamicModel.Level;
+}
+
+@* Folder Row with Accordeon *@
+@{
+  var isBs5 = Kit.Css.Is("bs5");
+  // Class for BS5 or BS4 (BS3 doesn't need any of these)
+  var paddingCssClass = isBs5 ? "ps-" + level : "pl-" + level;
+  var bsToggleAttr = isBs5 ? "data-bs-toggle" : "data-toggle";
+}
+<a href="#folder-@Folder.Id" class="list-group-item @paddingCssClass folder" data-folder-id="@Folder.Id" data-folder-level="@level" @bsToggleAttr="collapse" role="button" aria-expanded="false" aria-controls="folder-@Folder.Id">
+  <i class="co-icon fas fa-folder" aria-hidden="true"></i>
+  <strong>@Folder.Name</strong>
+</a>
+
+@* Show all files for each Folder *@
+@{
+  // Toolbar with only Edit Function
+	var fileMetadataToolbar = Kit.Toolbar.Empty().Edit();
+  level = level + 1;
+}
+<div id="folder-@Folder.Id" class="collapse">
+  @if(AsList(Folder.Files) != null){
+    foreach(var file in AsList(Folder.Files)){
+      var linkInfo = linkHelper.LinkInfos(file.Path, "", file.Metadata.Icon);
+
+      <a href="@file.Url" class="list-group-item list-group-item-action @paddingCssClass" aria-current="true" @fileMetadataToolbar.For(file.Metadata)>
+        @Html.Partial("Shared Part File.cshtml", new { File = file, Icon = linkInfo.Icon } )
+
+        <span class="description-wrapper">
+          @Html.Raw(file.Metadata.Description)
+        </span>
+      </a>
+    }
+  }
+  
+  @if(AsList(Folder.Files) != null){
+    foreach(var folder in AsList(Folder.Folders)){
+      @Html.Partial("Folder.Part Subfolder.cshtml", new { Folder = folder, Level = level })
+    }
+  }
+</div>

@@ -1,9 +1,13 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
+@* --- This is the Bootstrap5 Edition of the Files --- *@
 
 @{
   // Toolbar with only Edit Function
 	var fileMetadataToolbar = Kit.Toolbar.Empty().Edit();
+  
+ // Query whether bs5 skin is loaded and which class should be set
+  var isBs5 = Kit.Css.Is("bs5");
 }
 
 <div class="app-filelist mb-4" @Kit.Toolbar.Default(Content)>
@@ -11,8 +15,11 @@
 
   <div class="list-group">
     @foreach (var file in AsAdam(Content,"Files").Files) {
-      <a href="@file.Url" class="list-group-item list-group-item-action ps-2" aria-current="true" @fileMetadataToolbar.For(file.Metadata)>
-        @Html.Partial("File.cshtml", new { File = file, Icon = file.Metadata.Icon } )
+      // Class for BS5 or BS4 (BS3 doesn't need any of these)
+      var paddingCssClass = isBs5 ? "ps-2" : "pl-2";
+
+      <a href="@file.Url" class="list-group-item list-group-item-action @paddingCssClass" aria-current="true" @fileMetadataToolbar.For(file.Metadata)>
+        @Html.Partial("Shared Part File.cshtml", new { File = file, Icon = file.Metadata.Icon } )
 
         <span class="description-wrapper">
           @Html.Raw(file.Metadata.Description)
@@ -21,7 +28,7 @@
     }
     
     @foreach(var folder in AsAdam(Content, "Files").Folders) {
-      @Html.Partial("Subfolder.cshtml", new { Folder = folder, Level = 2 })
+      @Html.Partial("Folder.Part Subfolder.cshtml", new { Folder = folder, Level = 2 })
     }
   </div>
 </div>

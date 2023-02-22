@@ -1,5 +1,6 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
+@* --- This is the Bootstrap5 Edition of the Files --- *@
 
 @{
   var linkHelper = CreateInstance("../Shared/LinkHelper.cs");
@@ -16,7 +17,7 @@
       var linkInfo = linkHelper.LinkInfos(listItem);
 
       <a href="@listItem.Url" class="list-group-item list-group-item-action" target="@linkInfo.Window" aria-current="true" @listItemToolbar.For(listItem)>
-        @Html.Partial("File.cshtml", new { File = listItem, Icon = linkInfo.Icon } )
+        @Html.Partial("Shared Part File.cshtml", new { File = listItem, Icon = linkInfo.Icon } )
       </a>
     }
   </div>

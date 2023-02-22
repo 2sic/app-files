@@ -1,5 +1,6 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
+@* --- This is the Bootstrap5 Edition of the Files --- *@
 
 @{
   // Get the File and Icon from the DynamicModel (parameter passed to this partial Razor)
@@ -7,8 +8,8 @@
   var icon = DynamicModel.Icon;
   var isLocalFile = !file.Url.Contains("http");
   var fileTitle = Text.First(file.Metadata.Title, file.Name);
-
 }
+
 <i class="co-icon fas @icon" aria-hidden="true"></i>
 @fileTitle
 @if (isLocalFile) {
