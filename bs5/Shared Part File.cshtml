@@ -1,34 +1,40 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
 @* --- This is the Bootstrap5 Edition of the File --- *@
-
 @{
-  // Check we got all the parameters necessary (either File or FileInfo) - otherwise warn the developer
-  if (DynamicModel.File == null && DynamicModel.FileInfo == null) {
-    throw new Exception("FileList: No File or FileInfo passed to this partial. Please check your code.");
+  // 1. Get parameters and ensure we have all we need (File or FileEntity) - otherwise warn the developer
+  // * 'File' is an ADAM file which _has_ information (as .Metadata)
+  // * 'FileEntity' is a dynamic entity which _is_ the information, containing a link (url) to the file
+  var maybeFile = DynamicModel.File as ToSic.Sxc.Adam.IFile;
+  var maybeEntity = DynamicModel.FileEntity;
+  if (maybeFile == null && maybeEntity == null) {
+    throw new Exception("FileList: No File or FileEntity passed to this razor partial. Please check your code.");
   }
 
+  // Figure out mode: this template either got
+  var isFileWithMetadata = maybeFile != null;
+
   // The file info/metadata from FileInfo parameter or as Metadata from the File
-  var fileInfo = DynamicModel.FileInfo ?? DynamicModel.File.Metadata;
+  var fileInfo = maybeEntity ?? maybeFile.Metadata;
 
   // Get the File from the parameter or create it from the fileInfo (in the URL field)
-  var realFile = DynamicModel.File as ToSic.Sxc.Adam.IFile ?? Kit.Adam.File(fileInfo.Field("Url"));
+  // It can still be null, if the url is a link to a page
+  var realFile = maybeFile ?? Kit.Adam.File(fileInfo.Field("Url"));
 
-  // Special helper to figure out properties of the link/file
+  // Special helper to figure out properties of the link/file - note that the Url can point to a file, but it can also be a link to a page
   var linkHelper = CreateInstance("LinkHelper.cs");
-  var url = realFile != null ? realFile.Url : fileInfo.Url;
+  var url = isFileWithMetadata ? realFile.Url : fileInfo.Url;
   var linkInfo = linkHelper.LinkInfos(url, "", fileInfo.Icon);
 
-  // When in demo mode, files are not editable
+  // When in demo mode, files are not editable; If not set, assume false
   var rootIsDemo = DynamicModel.RootIsDemo ?? false;
 
   // The toolbar must edit either for metadata or the file-entity
-  var toolbar = realFile != null
+  var toolbar = isFileWithMetadata
     // For Metadata - do edit-only - unless we're showing demo, then only add info-button
     ? (rootIsDemo
-      ? Kit.Toolbar.Empty().Info(note: Resources.Toolbar.IsDemoSubItem)
-      : Kit.Toolbar.Empty().Metadata(realFile.Metadata, "File")
-    )
+      ? Kit.Toolbar.Empty().Info(note: Resources.Toolbar.IsDemoSubItem) // Demo: Show info-text only
+      : Kit.Toolbar.Empty().Metadata(realFile.Metadata, "File"))        // Metadata: Show edit for metadata type "File"
     // For file-list, provide most buttons to also allow add/sort etc.
     : Kit.Toolbar.Default(fileInfo).Layout("-");
 

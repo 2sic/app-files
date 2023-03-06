@@ -7,7 +7,7 @@
   
   <div class="list-group">
     @foreach (var fileEntity in AsList(Data)) {      
-      @Html.Partial("Shared Part File.cshtml", new { FileInfo = fileEntity, UseMetadata = false } )
+      @Html.Partial("Shared Part File.cshtml", new { FileEntity = fileEntity } )
     }
   </div>
 </div>
