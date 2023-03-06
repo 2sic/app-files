@@ -1,22 +1,61 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
-@* --- This is the Bootstrap5 Edition of the Files --- *@
+@* --- This is the Bootstrap5 Edition of the File --- *@
 
 @{
-  // Get the File and Icon from the DynamicModel (parameter passed to this partial Razor)
-  var file = DynamicModel.File;
-  var icon = DynamicModel.Icon;
-  var isLocalFile = !file.Url.Contains("http");
-  var fileTitle = Text.First(file.Metadata.Title, file.Name);
+  // Check we got all the parameters necessary (either File or FileInfo) - otherwise warn the developer
+  if (DynamicModel.File == null && DynamicModel.FileInfo == null) {
+    throw new Exception("FileList: No File or FileInfo passed to this partial. Please check your code.");
+  }
+
+  // The file info/metadata from FileInfo parameter or as Metadata from the File
+  var fileInfo = DynamicModel.FileInfo ?? DynamicModel.File.Metadata;
+
+  // Get the File from the parameter or create it from the fileInfo (in the URL field)
+  var realFile = DynamicModel.File as ToSic.Sxc.Adam.IFile ?? Kit.Adam.File(fileInfo.Field("Url"));
+
+  // Special helper to figure out properties of the link/file
+  var linkHelper = CreateInstance("LinkHelper.cs");
+  var url = realFile != null ? realFile.Url : fileInfo.Url;
+  var linkInfo = linkHelper.LinkInfos(url, "", fileInfo.Icon);
+
+  // When in demo mode, files are not editable
+  var rootIsDemo = DynamicModel.RootIsDemo ?? false;
+
+  // The toolbar must edit either for metadata or the file-entity
+  var toolbar = realFile != null
+    // For Metadata - do edit-only - unless we're showing demo, then only add info-button
+    ? (rootIsDemo
+      ? Kit.Toolbar.Empty().Info(note: Resources.Toolbar.IsDemoSubItem)
+      : Kit.Toolbar.Empty().Metadata(realFile.Metadata, "File")
+    )
+    // For file-list, provide most buttons to also allow add/sort etc.
+    : Kit.Toolbar.Default(fileInfo).Layout("-");
+
+  // If skin is Bootstrap5 then use "ps-2", BS4/others "pl-2"
+  var paddingCssClass = Kit.Css.Is("bs5") ? "ps-2" : "pl-2";
 }
 
-<i class="co-icon fas @icon" aria-hidden="true"></i>
-@fileTitle
-@if (isLocalFile) {
-  var sizeInfo = file.Id != null ? Kit.Adam.File(file.Id).SizeInfo : Kit.Adam.File(file.Field("Url")).SizeInfo;
-  if(sizeInfo.BestSize > 0){
-    <text>(@sizeInfo.BestSize.ToString("#.##") @sizeInfo.BestUnit)</text>
-  } else {
-    <text>(0 KB)</text>
+<a href="@url" class="list-group-item list-group-item-action @paddingCssClass" aria-current="true" target="@linkInfo.Window" @toolbar>
+  @* Show the Icon*@
+  <i class="co-icon fas @linkInfo.Icon" aria-hidden="true"></i>
+
+  @* Title *@
+  @Text.First(fileInfo.EntityTitle, fileInfo.Name, (realFile != null ? realFile.Name : ""))
+
+  @* Show size if possible *@
+  @if (realFile != null) {
+    if (realFile.SizeInfo.BestSize > 0) {
+      <text>(@realFile.SizeInfo.BestSize.ToString("#.##") @realFile.SizeInfo.BestUnit)</text>
+    } else {
+      <text>(0 KB)</text>
+    }
   }
-}
+
+  @* Show Description if it has any *@
+  @if (Text.Has(fileInfo.description)) {
+    <span class="description-wrapper">
+      @Html.Raw(fileInfo.description)
+    </span>
+  }
+</a>

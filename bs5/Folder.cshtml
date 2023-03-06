@@ -1,36 +1,23 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
-@* --- This is the Bootstrap5 Edition of the Files --- *@
-
+@* --- This is the Bootstrap5 Edition of the File --- *@
 @{
-  // Toolbar with only Edit Function
-	var fileMetadataToolbar = Kit.Toolbar.Empty().Edit();
-  
- // Query whether bs5 skin is loaded and which class should be set
-  var isBs5 = Kit.Css.Is("bs5");
+  // Get the ADAM object of the current content (folder)
+  var mainFolder = AsAdam(Content, "Files");
+  var rootIsDemo = Content.IsDemoItem;
 }
-
 <div class="app-filelist mb-4" @Kit.Toolbar.Default(Content)>
-  @Html.Partial("../Shared/Header tag.cshtml", new { HeadingType = Content.HeadingType, Title = Content.Title })
+  @Html.Partial("Shared Part Title.cshtml", new { HeadingType = Content.HeadingType, Title = Content.Title })
 
   <div class="list-group">
-    @foreach (var file in AsAdam(Content,"Files").Files) {
-      // Class for BS5 or BS4 (BS3 doesn't need any of these)
-      var paddingCssClass = isBs5 ? "ps-2" : "pl-2";
-
-      <a href="@file.Url" class="list-group-item list-group-item-action @paddingCssClass" aria-current="true" @fileMetadataToolbar.For(file.Metadata)>
-        @Html.Partial("Shared Part File.cshtml", new { File = file, Icon = file.Metadata.Icon } )
-
-        <span class="description-wrapper">
-          @Html.Raw(file.Metadata.Description)
-        </span>
-      </a>
+    @foreach (var file in mainFolder.Files) {
+      @Html.Partial("Shared Part File.cshtml", new { File = file, UseMetadata = true, RootIsDemo = rootIsDemo } )
     }
     
-    @foreach(var folder in AsAdam(Content, "Files").Folders) {
-      @Html.Partial("Folder.Part Subfolder.cshtml", new { Folder = folder, Level = 2 })
+    @foreach (var folder in mainFolder.Folders) {
+      @Html.Partial("Folder.Part Subfolder.cshtml", new { Folder = folder, Level = 2, RootIsDemo = rootIsDemo })
     }
   </div>
 </div>
 
-@Html.Partial("../Shared/Assets.cshtml")
+@Html.Partial("Assets.cshtml")

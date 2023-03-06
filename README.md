@@ -35,6 +35,7 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * v.01.02.00 2023-02
     * Replaced Tag.Custom with `Kit.HtmlTags`
     * Replaced turnOn Tag with `Kit.Page.TurnOn`
-    * Removed _ from Filenames
+    * Removed `_` from Filenames
     * Code in one file the bs5, less duplicated code
+    * Added `Description` field to simple file list
 

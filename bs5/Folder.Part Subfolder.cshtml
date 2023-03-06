@@ -1,11 +1,9 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
 
-@* --- This is the Bootstrap5 Edition of the Files --- *@
+@* --- This is the Bootstrap5 Edition of the File --- *@
 @* Show Subfolder from folders including all Files *@
 @{
-  var linkHelper = CreateInstance("../Shared/LinkHelper.cs");
-
   // Get the Folder and level from the DynamicModel (parameter passed to this partial Razor)
   var Folder = DynamicModel.Folder as ToSic.Sxc.Adam.IFolder;
   var level = DynamicModel.Level;
@@ -13,8 +11,8 @@
 
 @* Folder Row with Accordeon *@
 @{
-  var isBs5 = Kit.Css.Is("bs5");
   // Class for BS5 or BS4 (BS3 doesn't need any of these)
+  var isBs5 = Kit.Css.Is("bs5");
   var paddingCssClass = isBs5 ? "ps-" + level : "pl-" + level;
   var bsToggleAttr = isBs5 ? "data-bs-toggle" : "data-toggle";
 }
@@ -30,23 +28,11 @@
   level = level + 1;
 }
 <div id="folder-@Folder.Id" class="collapse">
-  @if(AsList(Folder.Files) != null){
-    foreach(var file in AsList(Folder.Files)){
-      var linkInfo = linkHelper.LinkInfos(file.Path, "", file.Metadata.Icon);
-
-      <a href="@file.Url" class="list-group-item list-group-item-action @paddingCssClass" aria-current="true" @fileMetadataToolbar.For(file.Metadata)>
-        @Html.Partial("Shared Part File.cshtml", new { File = file, Icon = linkInfo.Icon } )
-
-        <span class="description-wrapper">
-          @Html.Raw(file.Metadata.Description)
-        </span>
-      </a>
-    }
+  @foreach (var file in Folder.Files) {
+    @Html.Partial("Shared Part File.cshtml", new { File = file, UseMetadata = true, RootIsDemo = DynamicModel.RootIsDemo } )
   }
   
-  @if(AsList(Folder.Files) != null){
-    foreach(var folder in AsList(Folder.Folders)){
-      @Html.Partial("Folder.Part Subfolder.cshtml", new { Folder = folder, Level = level })
-    }
+  @foreach (var folder in Folder.Folders) {
+      @Html.Partial("Folder.Part Subfolder.cshtml", new { Folder = folder, Level = level, RootIsDemo = DynamicModel.RootIsDemo })
   }
 </div>
