@@ -33,7 +33,7 @@
   var toolbar = isFileWithMetadata
     // For Metadata - do edit-only - unless we're showing demo, then only add info-button
     ? (rootIsDemo
-      ? Kit.Toolbar.Empty().Info(note: Resources.Toolbar.IsDemoSubItem) // Demo: Show info-text only
+      ? Kit.Toolbar.Empty().Info(tweak: b => b.Note(Resources.Toolbar.IsDemoSubItem)) // Demo: Show info-text only
       : Kit.Toolbar.Empty().Metadata(realFile.Metadata, "File"))        // Metadata: Show edit for metadata type "File"
     // For file-list, provide most buttons to also allow add/sort etc.
     : Kit.Toolbar.Default(fileInfo).Layout("-");

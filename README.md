@@ -27,15 +27,16 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * Version 1.00 2022-05
   * first release
 * 2022-07
-  * Activated lightspeed
+  * Activated LightSpeed
   * Activated ajax reloading
   * Updated webpack.config
 * v01.01.00 2022-08
   * Added a folder view
-* v.01.02.00 2023-02
+* v.01.02.00 2023-02 / 2023-03
   * Replaced Tag.Custom with `Kit.HtmlTags`
   * Replaced turnOn Tag with `Kit.Page.TurnOn`
   * Removed `_` from Filenames
   * Code in one file the bs5, less duplicated code
   * Added `Description` field to simple file list
   * Ensured that metadata of demo-item can't be edited, but shows an info
+  * add note to is-demo-toolbar to show what's going on
