@@ -3,19 +3,21 @@
 @* --- This is the Bootstrap5 Edition of the File --- *@
 @{
   // Get the ADAM object of the current content (folder)
-  var mainFolder = AsAdam(Content, "Files");
-  var rootIsDemo = Content.IsDemoItem;
+  var rootItem = AsTyped(Data.MyContent);
+  var folder = rootItem.Folder("Files");
 }
-<div class="app-filelist mb-4" @Kit.Toolbar.Default(Content)>
-  @Html.Partial("Shared Part Title.cshtml", new { HeadingType = Content.HeadingType, Title = Content.Title })
+
+<div class="app-filelist mb-4" @Kit.Toolbar.Default(rootItem)>
+  
+  @Html.Partial("Shared Part Title.cshtml", new { HeadingType = rootItem.String("HeadingType"), Title = rootItem.String("Title") })
 
   <div class="list-group">
-    @foreach (var file in mainFolder.Files) {
-      @Html.Partial("Shared Part File.cshtml", new { File = file, UseMetadata = true, RootIsDemo = rootIsDemo } )
+    @foreach (var file in folder.Files) {
+      @Html.Partial("Shared Part File.cshtml", new { rootItem, file, fileInfo = file.Metadata, Level = 1 } )
     }
-    
-    @foreach (var folder in mainFolder.Folders) {
-      @Html.Partial("Folder.Part Subfolder.cshtml", new { Folder = folder, Level = 2, RootIsDemo = rootIsDemo })
+  
+    @foreach (var subFolder in folder.Folders) {
+      @Html.Partial("Folder.Part Subfolder.cshtml", new { rootItem, folder = subFolder, Level = 1 })
     }
   </div>
 </div>

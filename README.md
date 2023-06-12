@@ -8,12 +8,12 @@ CMS Simple File List.
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Swiper v2.01 requires 2sxc v15.04
-| Dnn                 | ✅    | For v7, v8 and v9
-| Oqtane 2            | ✅    | Requires v2.02
+| 2sxc                | ✅    | Files v1.03 requires 2sxc v16.02
+| Dnn                 | ✅    | For v9.06.01
+| Oqtane 2            | ✅    | Requires v3.04
 | No jQuery           | ✅    | Since v 2.01
 | Source & License    | ✅    | included, MIT
-| Best Practices      | ✅    | Uses v12.05 conventions
+| Best Practices      | ✅    | Uses v16.02 conventions
 | Bootstrap 3         | ✅    | v3 optimized
 | Bootstrap 4         | ✅    | v4 optimized
 | Bootstrap 5         | ✅    | v5 optimized
@@ -32,7 +32,7 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Updated webpack.config
 * v01.01.00 2022-08
   * Added a folder view
-* v.01.02.00 2023-02 / 2023-03
+* v01.02.00 2023-02 / 2023-03
   * Replaced Tag.Custom with `Kit.HtmlTags`
   * Replaced turnOn Tag with `Kit.Page.TurnOn`
   * Removed `_` from Filenames
@@ -40,3 +40,12 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Added `Description` field to simple file list
   * Ensured that metadata of demo-item can't be edited, but shows an info
   * add note to is-demo-toolbar to show what's going on
+* v01.03 2023-06
+  * Converted to typed / conventions of v16.02
+
+TODO: @2ro
+- see todos
+- BS3 doesn't unfold any more
+- BS4 is always unfolded
+- BS5 looks bad on subfolders
+- mobile check

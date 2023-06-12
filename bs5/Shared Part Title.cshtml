@@ -5,6 +5,6 @@
   it shows the header text inside an H-tag, but the number comes from the presentation settings
 *@
 
-@if (DynamicModel.HeadingType != "hide") {
-  @Tag.Custom(DynamicModel.HeadingType, DynamicModel.Title)
+@if (TypedModel.String("HeadingType") != "hide") {
+  @Tag.Custom(TypedModel.String("HeadingType"), TypedModel.String("Title"))
 }

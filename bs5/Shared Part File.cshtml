@@ -1,67 +1,54 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
 @* --- This is the Bootstrap5 Edition of the File --- *@
+@{// Prepare parameters, urls etc.
+
+  // 1. Get parameters and ensure we have all we need (File or FileInfo) - otherwise show error to the developer
+  TypedModel.RequireAny("File", "FileInfo");
+  var file = TypedModel.File("File", required: false);          // The ADAM file (if we have one - can also be null)
+  var fileInfo = TypedModel.Item("FileInfo", required: false);  // The info for the file, either file-metadata or a item referencing a file
+  var modeFileFirst = file != null;                             // Detect mode: a) file b) a fileInfo (which has a file-reference or url)
+  var url = file != null ? file.Url : fileInfo.Url("Url");
+  file = file ?? fileInfo.File("Url");    // If no file, try to create it from the fileInfo-url; can be null if it's just a link
+
+  // Helper to figure out properties of the link/file. The Url can point to a file, but it can also be a link to a page
+  var linkInfo = CreateInstance("LinkHelper.cs").LinkInfos(url, "", fileInfo.String("Icon"));
+
+  var level = TypedModel.Int("Level") + 1;
+}
 @{
-  // 1. Get parameters and ensure we have all we need (File or FileEntity) - otherwise warn the developer
-  // * 'File' is an ADAM file which _has_ information (as .Metadata)
-  // * 'FileEntity' is a dynamic entity which _is_ the information, containing a link (url) to the file
-  var maybeFile = DynamicModel.File as ToSic.Sxc.Adam.IFile;
-  var maybeEntity = DynamicModel.FileEntity;
-  if (maybeFile == null && maybeEntity == null) {
-    throw new Exception("FileList: No File or FileEntity passed to this razor partial. Please check your code.");
-  }
+  // Figure out best Toolbar and padding
+  // 1. The toolbar must edit either the file metadata or the file-entity
+  var toolbar = modeFileFirst
+    ? Kit.Toolbar.Metadata(file, "File")          // For pure files: edit metadata only
+    : Kit.Toolbar.Default(fileInfo).Layout("-");  // For list of items with file: Standard buttons to also allow add/sort etc.
+  toolbar = toolbar.DetectDemo(TypedModel.Item("RootItem"));  // Toolbar must use demo-mode if root-item is demo/preview item
 
-  // Figure out mode: this template either got
-  var isFileWithMetadata = maybeFile != null;
-
-  // The file info/metadata from FileInfo parameter or as Metadata from the File
-  var fileInfo = maybeEntity ?? maybeFile.Metadata;
-
-  // Get the File from the parameter or create it from the fileInfo (in the URL field)
-  // It can still be null, if the url is a link to a page
-  var realFile = maybeFile ?? Kit.Adam.File(fileInfo.Field("Url"));
-
-  // Special helper to figure out properties of the link/file - note that the Url can point to a file, but it can also be a link to a page
-  var linkHelper = CreateInstance("LinkHelper.cs");
-  var url = isFileWithMetadata ? realFile.Url : fileInfo.Url;
-  var linkInfo = linkHelper.LinkInfos(url, "", fileInfo.Icon);
-
-  // When in demo mode, files are not editable; If not set, assume false
-  var rootIsDemo = DynamicModel.RootIsDemo ?? false;
-
-  // The toolbar must edit either for metadata or the file-entity
-  var toolbar = isFileWithMetadata
-    // For Metadata - do edit-only - unless we're showing demo, then only add info-button
-    ? (rootIsDemo
-      ? Kit.Toolbar.Empty().Info(tweak: b => b.Note(Resources.Toolbar.IsDemoSubItem)) // Demo: Show info-text only
-      : Kit.Toolbar.Empty().Metadata(realFile.Metadata, "File"))        // Metadata: Show edit for metadata type "File"
-    // For file-list, provide most buttons to also allow add/sort etc.
-    : Kit.Toolbar.Default(fileInfo).Layout("-");
-
-  // If skin is Bootstrap5 then use "ps-2", BS4/others "pl-2"
-  var paddingCssClass = Kit.Css.Is("bs5") ? "ps-2" : "pl-2";
+  // 2. If skin is Bootstrap5 then use "ps-2", BS4/others "pl-2"
+  var paddingCssClass = Kit.Css.Is("bs5") ? "ps-" + level : "pl-" + level;
 }
 
+@* Show a link to the file with icon, title, size and description *@
 <a href="@url" class="list-group-item list-group-item-action @paddingCssClass" aria-current="true" target="_blank" @toolbar>
   @* Show the Icon*@
   <i class="co-icon fas @linkInfo.Icon" aria-hidden="true"></i>
 
-  @* Title *@
-  @Text.First(fileInfo.EntityTitle, fileInfo.Name, (realFile != null ? realFile.Name : ""))
+  @* Title - try to pick the best text to use as title *@
+  @Text.First(fileInfo.EntityTitle, fileInfo.String("Name"), (file != null ? file.Name : "")) 
 
   @* Show size if possible *@
-  @if (realFile != null) {
-    if (realFile.SizeInfo.BestSize > 0) {
-      <text>(@realFile.SizeInfo.BestSize.ToString("#.##") @realFile.SizeInfo.BestUnit)</text>
+  @if (file != null) {
+    if (file.SizeInfo.BestSize > 0) {
+      <text>(@file.SizeInfo.BestSize.ToString("#.##") @file.SizeInfo.BestUnit)</text>
     } else {
       <text>(0 KB)</text>
     }
   }
 
   @* Show Description if it has any *@
-  @if (Text.Has(fileInfo.description)) {
+  @if (Text.Has(fileInfo.String("description"))) {
     <span class="description-wrapper">
-      @Html.Raw(fileInfo.description)
+      @fileInfo.Html("description", container: "")
     </span>
   }
 </a>

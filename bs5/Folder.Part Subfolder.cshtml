@@ -1,38 +1,33 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
-
 @* --- This is the Bootstrap5 Edition of the File --- *@
 @* Show Subfolder from folders including all Files *@
 @{
-  // Get the Folder and level from the DynamicModel (parameter passed to this partial Razor)
-  var Folder = DynamicModel.Folder as ToSic.Sxc.Adam.IFolder;
-  var level = DynamicModel.Level;
+  // Get the Folder and level from the TypedModel (parameter passed to this partial Razor)
+  var rootItem = TypedModel.Item("RootItem");
+  var folder = TypedModel.Folder("Folder");
+  var level = TypedModel.Int("Level");
 }
 
 @* Folder Row with Accordeon *@
 @{
   // Class for BS5 or BS4 (BS3 doesn't need any of these)
   var isBs5 = Kit.Css.Is("bs5");
-  var paddingCssClass = isBs5 ? "ps-" + level : "pl-" + level;
+  var paddingCssClass = (isBs5 ? "ps-" : "pl-") + (level + 1);
   var bsToggleAttr = isBs5 ? "data-bs-toggle" : "data-toggle";
 }
-<a href="#folder-@Folder.Id" class="list-group-item @paddingCssClass folder" data-folder-id="@Folder.Id" data-folder-level="@level" @bsToggleAttr="collapse" role="button" aria-expanded="false" aria-controls="folder-@Folder.Id">
+<a href="#folder-@folder.Id" class="list-group-item folder @paddingCssClass" data-folder-id="@folder.Id" data-folder-level="@level" @bsToggleAttr="collapse" role="button" aria-expanded="false" aria-controls="folder-@folder.Id">
   <i class="co-icon fas fa-folder" aria-hidden="true"></i>
-  <strong>@Folder.Name</strong>
+  <strong>@folder.Name</strong>
 </a>
 
 @* Show all files for each Folder *@
-@{
-  // Toolbar with only Edit Function
-	var fileMetadataToolbar = Kit.Toolbar.Empty().Edit();
-  level = level + 1;
-}
-<div id="folder-@Folder.Id" class="collapse">
-  @foreach (var file in Folder.Files) {
-    @Html.Partial("Shared Part File.cshtml", new { File = file, UseMetadata = true, RootIsDemo = DynamicModel.RootIsDemo } )
+<div id="folder-@folder.Id" class="collapse">
+  @foreach (var file in folder.Files) {
+    @Html.Partial("Shared Part File.cshtml", new { rootItem, file, fileInfo = file.Metadata, level = level + 1 } )
   }
   
-  @foreach (var folder in Folder.Folders) {
-      @Html.Partial("Folder.Part Subfolder.cshtml", new { Folder = folder, Level = level, RootIsDemo = DynamicModel.RootIsDemo })
+  @foreach (var subFolder in folder.Folders) {
+    @Html.Partial("Folder.Part Subfolder.cshtml", new { rootItem, folder = subFolder, level = level + 1 })
   }
 </div>
