@@ -2,21 +2,19 @@
 // To keep things simple, it uses the standard variables of
 // bootstrap 4 conventions.
 
-@media all {
-  .app-filelist {
-    .list-group {
-      a > {
-        svg {
-          width: 20px;
-          margin-right: 4px;
-        }
+.app-filelist {
+  .list-group {
+    a > {
+      svg {
+        width: 20px;
+        margin-right: 4px;
       }
     }
   }
-  
-  .description-wrapper{
-    p{
-      margin: 0!important;
-    }
+}
+
+.description-wrapper{
+  p{
+    margin: 0!important;
   }
 }
