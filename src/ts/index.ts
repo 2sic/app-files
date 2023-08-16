@@ -32,7 +32,8 @@ function initAppFiles() {
 
   if(currentUrlHash) {
     var hashFolder = document.querySelector(`a[href='${currentUrlHash}']`);
-    openCollapse(hashFolder)
+    if(hashFolder != null)
+      openCollapse(hashFolder)
   }
   
   function openCollapse(elem: Element) {

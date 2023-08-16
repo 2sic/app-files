@@ -1,15 +1,15 @@
-@inherits Custom.Hybrid.Razor14
+@inherits Custom.Hybrid.RazorTyped
 @using ToSic.Razor.Blade;
 @* --- This is the Bootstrap5 Edition of the File --- *@
 @{
-  var rootItem = AsTyped(Data.MyContent);
-  var header = AsTyped(Data.MyHeader);
+  var rootItem = MyItem;
+  var header = MyHeader;
 }
-<div class="app-filelist mb-4" @Kit.Toolbar.Default(header)>
+<div class="app-filelist mb-4" @Kit.Toolbar.Default(header).Settings(hover:"left", autoAddMore:"start");>
   @Html.Partial("Shared Part Title.cshtml", new { HeadingType = header.String("HeadingType"), Title = header.String("Title") })
   
   <div class="list-group">
-    @foreach (var fileInfo in AsTypedList(Data.MyContent)) {      
+    @foreach (var fileInfo in MyItems) {      
       @Html.Partial("Shared Part File.cshtml", new { rootItem, fileInfo, level = 0 } )
     }
   </div>

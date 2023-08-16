@@ -9,8 +9,8 @@ CMS Simple File List.
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
 | 2sxc                | ✅    | Files v1.03 requires 2sxc v16.02
-| Dnn                 | ✅    | For v9.06.01
-| Oqtane 2            | ✅    | Requires v3.04
+| Dnn                 | ✅    | For v9.6.1+
+| Oqtane 2            | ✅    | Requires v3.04+
 | No jQuery           | ✅    | Since v 2.01
 | Source & License    | ✅    | included, MIT
 | Best Practices      | ✅    | Uses v16.02 conventions
@@ -41,11 +41,5 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Ensured that metadata of demo-item can't be edited, but shows an info
   * add note to is-demo-toolbar to show what's going on
 * v01.03 2023-06
-  * Converted to typed / conventions of v16.02
-
-TODO: @2ro
-- see todos
-- BS3 doesn't unfold any more
-- BS4 is always unfolded
-- BS5 looks bad on subfolders
-- mobile check
+  * 2sxc 16.02 coding conventions
+  * everything typed

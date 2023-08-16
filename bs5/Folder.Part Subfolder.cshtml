@@ -1,12 +1,12 @@
-@inherits Custom.Hybrid.Razor14
+@inherits Custom.Hybrid.RazorTyped
 @using ToSic.Razor.Blade;
 @* --- This is the Bootstrap5 Edition of the File --- *@
 @* Show Subfolder from folders including all Files *@
 @{
-  // Get the Folder and level from the TypedModel (parameter passed to this partial Razor)
-  var rootItem = TypedModel.Item("RootItem");
-  var folder = TypedModel.Folder("Folder");
-  var level = TypedModel.Int("Level");
+  // Get the Folder and level from the MyModel (parameter passed to this partial Razor)
+  var rootItem = MyModel.Item("RootItem");
+  var folder = MyModel.Folder("Folder");
+  var level = MyModel.Int("Level");
 }
 
 @* Folder Row with Accordeon *@

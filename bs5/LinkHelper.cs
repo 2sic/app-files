@@ -1,19 +1,18 @@
 using System.Collections.Generic;
-using System.Dynamic;
 using System.IO;
 using ToSic.Razor.Blade;
 
-public class LinkHelper: Custom.Hybrid.Code14
+public class LinkHelper: Custom.Hybrid.CodeTyped
 {
   // check a link, prepare target window, icon etc. based on various settings
-  public dynamic LinkInfos(string link, string window, string icon) {
+  public object LinkInfos(string link, string window, string icon) {
     var fileExtensions = new List<string> { ".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".ppsx", ".txt" };
 
     // found something?
     var found = Text.Has(link);
 
     // process remaining properties, in case we want to override them with automatic stuff
-    if(found) {
+    if (found) {
       var linkExt = Path.GetExtension(link.ToLower());
       // get the right fontawesome class ending for the file type
       var filetypeIcon = iconEnding(linkExt);
@@ -27,7 +26,7 @@ public class LinkHelper: Custom.Hybrid.Code14
 
       // auto-detect icon based on file type if it's stays on the same site
       // but only if no icon was specified already
-      if(!Text.Has(icon))
+      if (!Text.Has(icon))
         icon = isDoc
         ? "fas fa-file" + filetypeIcon // if doc, then file-icon + add the file ending for the right file type
         : (isInternal
@@ -35,16 +34,16 @@ public class LinkHelper: Custom.Hybrid.Code14
           : "fas fa-external-link-alt");   // else if external, show "open new window"
 
       // optionally auto-detect the window
-      if(!Text.Has(window) || window == "auto")
+      if (!Text.Has(window) || window == "auto")
         window = isInternal && !isDoc ? "_self" : "_blank";
     }
 
-    // Return a dynamic object with these properties. It must be dynamic, otherwise the other page cannot use the 
-    return AsDynamic(new {
+    // Return a dyn object with these properties.
+    return new {
       Found = found,
       Icon = icon,
       Window = window,
-    });
+    };
   }
 
   public string iconEnding(string linkExt){

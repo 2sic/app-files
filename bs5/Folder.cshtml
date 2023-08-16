@@ -1,9 +1,9 @@
-@inherits Custom.Hybrid.Razor14
+@inherits Custom.Hybrid.RazorTyped
 @using ToSic.Razor.Blade;
 @* --- This is the Bootstrap5 Edition of the File --- *@
 @{
   // Get the ADAM object of the current content (folder)
-  var rootItem = AsTyped(Data.MyContent);
+  var rootItem = MyItem;
   var folder = rootItem.Folder("Files");
 }
 
