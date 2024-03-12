@@ -1,23 +1,27 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
-@* --- This is the Bootstrap5 Edition of the File --- *@
+@inherits AppCode.Razor.AppRazor
+@using AppCode.Data
+@using AppCode.Razor
+@using ToSic.Razor.Blade
+
+@* --- This Shows a Folder and all the files/folders in it recursively --- *@
+
 @{
-  // Get the ADAM object of the current content (folder)
-  var rootItem = MyItem;
-  var folder = rootItem.Folder("Files");
+  var folder = As<Folder>(MyItem);  // Folder object as a strongly typed object
 }
 
-<div class="app-filelist mb-4" @Kit.Toolbar.Default(rootItem)>
-  
-  @Html.Partial("Shared Part Title.cshtml", new { HeadingType = rootItem.String("HeadingType"), Title = rootItem.String("Title") })
+<div class="app-filelist mb-4" @Kit.Toolbar.Default(folder)>
+  @* Show the title *@
+  @ShowTitle(folder)
 
   <div class="list-group">
-    @foreach (var file in folder.Files) {
-      @Html.Partial("Shared Part File.cshtml", new { rootItem, file, fileInfo = file.Metadata, Level = 1 } )
+    @* Show all files *@
+    @foreach (var file in folder.FilesFolder.Files) {
+      @Html.Partial("Shared Part File.cshtml", new FileViewModel(file, 1, As<File>(file.Metadata)))
     }
   
-    @foreach (var subFolder in folder.Folders) {
-      @Html.Partial("Folder.Part Subfolder.cshtml", new { rootItem, folder = subFolder, Level = 1 })
+    @* Show all subfolders *@
+    @foreach (var subFolder in folder.FilesFolder.Folders) {
+      @Html.Partial("Folder.Part Subfolder.cshtml", new FolderViewModel(subFolder, 1))
     }
   </div>
 </div>

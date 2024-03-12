@@ -1,33 +1,37 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
+@inherits AppCode.Razor.AppRazor<AppCode.Razor.FolderViewModel>
+@using AppCode.Data
+@using AppCode.Razor
+@using ToSic.Razor.Blade
 @* --- This is the Bootstrap5 Edition of the File --- *@
 @* Show Subfolder from folders including all Files *@
 @{
   // Get the Folder and level from the MyModel (parameter passed to this partial Razor)
-  var rootItem = MyModel.Item("RootItem");
-  var folder = MyModel.Folder("Folder");
-  var level = MyModel.Int("Level");
+  var folder = Model.Folder;
+  var level = Model.Level;
+  var sectionId = UniqueKey + folder.Id;
 }
 
 @* Folder Row with Accordeon *@
-@{
-  // Class for BS5 or BS4 (BS3 doesn't need any of these)
-  var isBs5 = Kit.Css.Is("bs5");
-  var paddingCssClass = (isBs5 ? "ps-" : "pl-") + (level + 1);
-  var bsToggleAttr = isBs5 ? "data-bs-toggle" : "data-toggle";
-}
-<a href="#folder-@folder.Id" class="list-group-item folder @paddingCssClass" data-folder-id="@folder.Id" data-folder-level="@level" @bsToggleAttr="collapse" role="button" aria-expanded="false" aria-controls="folder-@folder.Id">
+<a
+  href="#folder-@sectionId"
+  class="list-group-item folder @ClassPadding(level + 1)"
+  data-folder-id="@sectionId"
+  data-folder-level="@level"
+  @BsToggleAttr="collapse" role="button"
+  aria-expanded="false"
+  aria-controls="folder-@sectionId"
+  >
   <i class="co-icon fas fa-folder" aria-hidden="true"></i>
   <strong>@folder.Name</strong>
 </a>
 
 @* Show all files for each Folder *@
-<div id="folder-@folder.Id" class="collapse">
+<div id="folder-@sectionId" class="collapse">
   @foreach (var file in folder.Files) {
-    @Html.Partial("Shared Part File.cshtml", new { rootItem, file, fileInfo = file.Metadata, level = level + 1 } )
+    @Html.Partial("Shared Part File.cshtml", new FileViewModel(file, level + 1, As<File>(file.Metadata)))
   }
   
   @foreach (var subFolder in folder.Folders) {
-    @Html.Partial("Folder.Part Subfolder.cshtml", new { rootItem, folder = subFolder, level = level + 1 })
+    @Html.Partial("Folder.Part Subfolder.cshtml", new FolderViewModel(subFolder, level + 1))
   }
 </div>

@@ -1,54 +1,53 @@
-@inherits Custom.Hybrid.RazorTyped
-@using System.Linq;
-@using ToSic.Razor.Blade;
+@inherits AppCode.Razor.AppRazor<AppCode.Razor.FileViewModel>
+@using AppCode
+@using AppCode.Data
+@using AppCode.Services
+@using System.Linq
+@using ToSic.Razor.Blade
 @* --- This is the Bootstrap5 Edition of the File --- *@
-@{// Prepare parameters, urls etc.
-  // 1. Get parameters and ensure we have all we need (File or FileInfo) - otherwise show error to the developer
-  if (!MyModel.Keys(only: new [] { "File", "FileInfo" }).Any()) {
-    throw new Exception("You must provide either a File or a FileInfo to Shared Part File");
-  }
-  var file = MyModel.File("File", required: false);          // The ADAM file (if we have one - can also be null)
-  var fileInfo = MyModel.Item("FileInfo", required: false);  // The info for the file, either file-metadata or a item referencing a file
-  var modeFileFirst = file != null;                          // Detect mode: a) file b) a fileInfo (which has a file-reference or url)
-  var url = file != null ? file.Url : fileInfo.Url("Url");
-  file = file ?? fileInfo.File("Url");    // If no file, try to create it from the fileInfo-url; can be null if it's just a link
+@{
+  // 1.   Prepare parameters, urls etc.
+  // 1.1. Get parameters and ensure we have all we need (File or FileInfo) - otherwise show error to the developer
+  var fileInfo = Model.FileInfo;  // Info for the file, either file-metadata or a item referencing a file
+
+  // 1.2.  Get the URL of the file or the fileInfo - adamFile takes precedence
+  var url = Model.AdamFile?.Url ?? fileInfo.Url;
+    
+  // If no adamFile, try to create it from the fileInfo-url; can be null if it's just a http-link
+  var file = Model.AdamFile ?? fileInfo.UrlFile;
 
   // Helper to figure out properties of the link/file. The Url can point to a file, but it can also be a link to a page
-  var linkInfo = AsTyped(GetCode("LinkHelper.cs").LinkInfos(url, "", fileInfo.String("Icon")) as object);
+  var icon = GetService<LinkHelperService>().LinkInfos(url, "", fileInfo.Icon).Icon;
 
-  var level = MyModel.Int("Level") + 1;
-}
-@{
-  // Figure out best Toolbar and padding
-  // 1. The toolbar must edit either the file metadata or the file-entity
-  var toolbar = modeFileFirst
-    ? Kit.Toolbar.Metadata(file, "File")          // For pure files: edit metadata only
-    : Kit.Toolbar.Default(fileInfo).Layout("-");  // For list of items with file: Standard buttons to also allow add/sort etc.
-  toolbar = toolbar.DetectDemo(MyModel.Item("RootItem"));  // Toolbar must use demo-mode if root-item is demo/preview item
+  // 2.   Figure out best Toolbar and padding
+  // 2.1. The toolbar must edit either the file metadata or the file-entity
+  var toolbar = Model.AdamFile != null
+    ? Kit.Toolbar.Metadata(Model.AdamFile, "File")  // For pure files: edit metadata only, of type "File"
+    : Kit.Toolbar.Default(fileInfo).Layout("-");    // For list of items with file: Standard buttons to also allow add/sort etc.
+  toolbar = toolbar.DetectDemo(MyItem);             // Toolbar must use demo-mode if root-item is demo/preview item
 
-  // 2. If skin is Bootstrap5 then use "ps-2", BS4/others "pl-2"
-  var paddingCssClass = Kit.Css.Is("bs5") ? "ps-" + level : "pl-" + level;
+  // 2.2. If skin is Bootstrap5 then use "ps-2", BS4/others "pl-2"
+  var paddingCssClass = ClassPadding(Model.Level + 1);
 }
 
 @* Show a link to the file with icon, title, size and description *@
 <a href="@url" class="list-group-item list-group-item-action @paddingCssClass" aria-current="true" target="_blank" @toolbar>
   @* Show the Icon*@
-  <i class="co-icon fas @linkInfo.String("Icon")" aria-hidden="true"></i>
+  <i class="co-icon fas @icon" aria-hidden="true"></i>
 
   @* Title - try to pick the best text to use as title *@
-  @Text.First(fileInfo.Title, fileInfo.String("Name"), (file != null ? file.Name : "")) 
+  @Text.First(fileInfo.Title, fileInfo.Name, (file?.Name ?? "")) 
 
   @* Show size if possible *@
   @if (file != null) {
-    if (file.SizeInfo.BestSize > 0) {
-      <text>(@file.SizeInfo.BestSize.ToString("#.##") @file.SizeInfo.BestUnit)</text>
-    } else {
-      <text>(0 KB)</text>
-    }
+    var size = file.SizeInfo;
+    <text>
+      (@(size.Bytes <= 0 ? "0 KB" : $"{size.BestSize.ToString("#.##")} {size.BestUnit}"))
+    </text>
   }
 
   @* Show Description if it has any *@
-  @if (Text.Has(fileInfo.String("description"))) {
+  @if (fileInfo.IsNotEmpty("description")) {
     <span class="description-wrapper">
       @fileInfo.Html("description", container: "")
     </span>

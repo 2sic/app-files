@@ -1,16 +1,18 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
-@* --- This is the Bootstrap5 Edition of the File --- *@
-@{
-  var rootItem = MyItem;
-  var header = MyHeader;
-}
-<div class="app-filelist mb-4" @Kit.Toolbar.Default(header).Settings(hover:"left", autoAddMore:"start");>
-  @Html.Partial("Shared Part Title.cshtml", new { HeadingType = header.String("HeadingType"), Title = header.String("Title") })
+@inherits AppCode.Razor.AppRazor
+@using AppCode.Data
+@using AppCode.Razor
+@using ToSic.Razor.Blade
+
+@* --- This shows a list of files, which the user can manually order --- *@
+
+<div class="app-filelist mb-4" @Kit.Toolbar.Default(MyHeader).Settings(hover: "left", autoAddMore: "start")>
+  @* Show the title *@
+  @ShowTitle(As<ListHeader>(MyHeader))
   
+  @* Loop all the files and show each one *@
   <div class="list-group">
-    @foreach (var fileInfo in MyItems) {      
-      @Html.Partial("Shared Part File.cshtml", new { rootItem, fileInfo, level = 0 } )
+    @foreach (var fileItem in AsList<File>(MyItems)) {      
+      @Html.Partial("Shared Part File.cshtml", new FileViewModel(null, 0, fileItem))
     }
   </div>
 </div>
