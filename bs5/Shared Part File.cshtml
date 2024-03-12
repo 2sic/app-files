@@ -14,7 +14,7 @@
   file = file ?? fileInfo.File("Url");    // If no file, try to create it from the fileInfo-url; can be null if it's just a link
 
   // Helper to figure out properties of the link/file. The Url can point to a file, but it can also be a link to a page
-  var linkInfo = AsTyped(GetCode("LinkHelper.cs").LinkInfos(url, "", fileInfo.String("Icon")));
+  var linkInfo = AsTyped(GetCode("LinkHelper.cs").LinkInfos(url, "", fileInfo.String("Icon")) as object);
 
   var level = MyModel.Int("Level") + 1;
 }
@@ -33,7 +33,7 @@
 @* Show a link to the file with icon, title, size and description *@
 <a href="@url" class="list-group-item list-group-item-action @paddingCssClass" aria-current="true" target="_blank" @toolbar>
   @* Show the Icon*@
-  <i class="co-icon fas @linkInfo.Icon" aria-hidden="true"></i>
+  <i class="co-icon fas @linkInfo.String("Icon")" aria-hidden="true"></i>
 
   @* Title - try to pick the best text to use as title *@
   @Text.First(fileInfo.Title, fileInfo.String("Name"), (file != null ? file.Name : "")) 
