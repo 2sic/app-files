@@ -4,6 +4,10 @@
 
 .app-filelist {
   .list-group {
+    .list-group-item {
+      background-color: #fff;
+    }
+    
     a > {
       svg {
         width: 20px;
