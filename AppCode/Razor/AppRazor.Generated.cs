@@ -1,9 +1,7 @@
 using AppCode.Data;
 using ToSic.Sxc.Apps;
 
-/// <summary>
-/// WIP Autogenerating
-/// </summary>
+
 namespace AppCode.Razor
 {
   public abstract partial class AppRazor: AppRazor<object>

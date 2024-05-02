@@ -1,10 +1,5 @@
 using AppCode.Data;
 using ToSic.Razor.Blade;
-using ToSic.Sxc.Apps;
-
-/// <summary>
-/// WIP Autogenerating
-/// </summary>
 namespace AppCode.Razor
 {
   public abstract partial class AppRazor: AppRazor<object>
@@ -15,7 +10,7 @@ namespace AppCode.Razor
   public abstract partial class AppRazor<TModel>: Custom.Hybrid.RazorTyped<TModel>
   {
     /// <summary>
-    /// Create a dynamic title tag using different tags such as <h1>, <h2> etc.
+    /// Create  title tag using different tags such as <h1>, <h2> etc.
     /// based on the requested size or the presentation settings
     /// </summary>
     /// <returns></returns>
