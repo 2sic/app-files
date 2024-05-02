@@ -11,9 +11,6 @@ namespace AppCode.Razor
 
   }
 
-  /// <summary>
-  /// todo
-  /// </summary>
   public abstract partial class AppRazor<TModel>: Custom.Hybrid.RazorTyped<TModel>
   {
     /// <summary>

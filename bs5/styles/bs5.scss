@@ -24,5 +24,7 @@
 // If you want to use breakpoints, you have to use the mixins and breakpoint sass 
 @import "../../node_modules/bootstrap/scss/_mixins";
 @import "../../node_modules/bootstrap/scss/_dropdown";
+@import "../../node_modules/bootstrap/scss/_list-group";
+
 
 @import "_style.scss"; // General CSS stuff for everything
