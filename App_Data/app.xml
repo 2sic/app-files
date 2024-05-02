@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="17.04.01" ExportDate="2024-03-12T11:10:16.3553133+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="17.07.00" ExportDate="2024-05-02T11:21:12.1402738+02:00">
   <Header>
     <App Guid="bbaf55c7-e4d4-4379-bf92-6faab8c33529" />
     <Language Default="en-us" />
@@ -638,16 +638,16 @@
       <Value Key="RequiredDnnVersion" Value="09.06.01" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredOqtaneVersion" Value="04.00.00" Type="String">
+      <Value Key="RequiredOqtaneVersion" Value="05.00.00" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="17.03.00" Type="String">
+      <Value Key="RequiredVersion" Value="17.07.00" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="02.00.00" Type="String">
+      <Value Key="Version" Value="02.17.00" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
     </Entity>
@@ -751,18 +751,21 @@
       <Value Key="Name" Value="Test without Icon" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
-      <Value Key="Url" Value="file:6158" Type="Hyperlink">
+      <Value Key="Url" Value="file:6575" Type="Hyperlink">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="81b39bca-0bde-4aa3-967b-d97647bb0adf" AttributeSetName="File" EntityGUID="acebec83-db87-4541-8508-0f79f2a7546c">
+      <Value Key="Description" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
       <Value Key="Icon" Value="fa-angle-double-up" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
       <Value Key="Name" Value="Test with Icon" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
-      <Value Key="Url" Value="file:6159" Type="Hyperlink">
+      <Value Key="Url" Value="file:6576" Type="Hyperlink">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
     </Entity>
@@ -771,10 +774,10 @@
       <Value Key="Template" Value="8e158d42-0cbc-4ffb-bcca-68cf2b5e9517" Type="Entity" />
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="4d802731-11ce-4c25-b35b-fa84ec643fae" Json="True">
-      <Value Key="Content" Value="acebec83-db87-4541-8508-0f79f2a7546c,null,0f0edd83-3fd2-442a-90c3-cd2eca3b5dea,8ef18339-b3ef-48fd-a82e-d9d567029d0a" Type="Entity" />
+      <Value Key="Content" Value="null,0f0edd83-3fd2-442a-90c3-cd2eca3b5dea,8ef18339-b3ef-48fd-a82e-d9d567029d0a" Type="Entity" />
       <Value Key="ListContent" Value="01169662-7624-4af2-aedd-b504b13d4eb2" Type="Entity" />
       <Value Key="ListPresentation" Value="null" Type="Entity" />
-      <Value Key="Presentation" Value="null,null,null,null" Type="Entity" />
+      <Value Key="Presentation" Value="null,null,null" Type="Entity" />
       <Value Key="Template" Value="8e158d42-0cbc-4ffb-bcca-68cf2b5e9517" Type="Entity" />
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="7e2676d8-00a6-474a-9bdb-80d4196af780" AttributeSetName="ListHeader" EntityGUID="aa588c25-b813-4905-8321-549b7b12e46a">
@@ -795,7 +798,7 @@
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="c4334cbe-5950-43a8-946b-fc4dfd5bf496" Json="True">
       <Value Key="Content" Value="2d962555-b2d8-489c-b323-09fa860c519e" Type="Entity" />
-      <Value Key="ListContent" Value="18146763-ce21-4990-a803-5d7a278d8836" Type="Entity" />
+      <Value Key="ListContent" Value="null" Type="Entity" />
       <Value Key="ListPresentation" Value="null" Type="Entity" />
       <Value Key="Presentation" Value="null" Type="Entity" />
       <Value Key="Template" Value="8e158d42-0cbc-4ffb-bcca-68cf2b5e9517" Type="Entity" />
@@ -988,13 +991,16 @@
       <Value Key="Template" Value="52595f69-0da7-4859-9bad-3d5206d14c80" Type="Entity" />
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="81b39bca-0bde-4aa3-967b-d97647bb0adf" AttributeSetName="File" EntityGUID="8ef18339-b3ef-48fd-a82e-d9d567029d0a">
+      <Value Key="Description" Value="" Type="String">
+        <Dimension DimensionID="197" ReadOnly="false" />
+      </Value>
       <Value Key="Icon" Value="" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
       <Value Key="Name" Value="Test mit 0 KB" Type="String">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
-      <Value Key="Url" Value="file:6269" Type="Hyperlink">
+      <Value Key="Url" Value="file:6577" Type="Hyperlink">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
     </Entity>
@@ -1009,34 +1015,6 @@
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
       <Value Key="Title" Value="Field.Settings.Visible" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-    </Entity>
-    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="81b39bca-0bde-4aa3-967b-d97647bb0adf" AttributeSetName="File" EntityGUID="c1851161-56c6-4c9f-b997-7be7bbb799fc" KeyString="file:6243">
-      <Value Key="Description" Value="&lt;p&gt;This is a demo description.&lt;/p&gt;" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Icon" Value="fa-address-book" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Name" Value="" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Url" Value="" Type="Hyperlink">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-    </Entity>
-    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="81b39bca-0bde-4aa3-967b-d97647bb0adf" AttributeSetName="File" EntityGUID="cadddc24-c9a6-411a-a355-59bdd62ad245" KeyString="file:6252">
-      <Value Key="Description" Value="" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Icon" Value="fa-address-book" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Name" Value="" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Url" Value="" Type="Hyperlink">
         <Dimension DimensionID="197" ReadOnly="false" />
       </Value>
     </Entity>
@@ -1057,61 +1035,17 @@
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="d56b637d-bd88-46c2-ae86-b2b8696be6cd" Json="True">
       <Value Key="Template" Value="52595f69-0da7-4859-9bad-3d5206d14c80" Type="Entity" />
     </Entity>
-    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="7e2676d8-00a6-474a-9bdb-80d4196af780" AttributeSetName="ListHeader" EntityGUID="18146763-ce21-4990-a803-5d7a278d8836">
-      <Value Key="HeadingType" Value="" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Title" Value="" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-    </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="b4cb258c-8853-4c43-b6c6-642e3a28ae28" Json="True">
-      <Value Key="ListContent" Value="2c40dc79-7c2a-4b15-b714-04b35db10171" Type="Entity" />
+      <Value Key="ListContent" Value="null" Type="Entity" />
       <Value Key="ListPresentation" Value="null" Type="Entity" />
       <Value Key="Template" Value="8e158d42-0cbc-4ffb-bcca-68cf2b5e9517" Type="Entity" />
-    </Entity>
-    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="7e2676d8-00a6-474a-9bdb-80d4196af780" AttributeSetName="ListHeader" EntityGUID="2c40dc79-7c2a-4b15-b714-04b35db10171">
-      <Value Key="HeadingType" Value="" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Title" Value="" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-    </Entity>
-    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="81b39bca-0bde-4aa3-967b-d97647bb0adf" AttributeSetName="File" EntityGUID="36b9c624-30d7-40c8-809a-8ccda022d51d" KeyString="file:6329">
-      <Value Key="Description" Value="&lt;p&gt;yxcyxc&lt;/p&gt;" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Icon" Value="fa-address-book" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Name" Value="ycxyxcyxc" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Url" Value="" Type="Hyperlink">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-    </Entity>
-    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="81b39bca-0bde-4aa3-967b-d97647bb0adf" AttributeSetName="File" EntityGUID="219417f7-4d49-441c-8a2a-958c943d5951" KeyString="file:6245">
-      <Value Key="Description" Value="&lt;p&gt;Metadata&lt;/p&gt;" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Icon" Value="" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Name" Value="" Type="String">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
-      <Value Key="Url" Value="" Type="Hyperlink">
-        <Dimension DimensionID="197" ReadOnly="false" />
-      </Value>
     </Entity>
   </Entities>
   <PortalFiles>
     <File Id="6329" RelativePath="adam\Files\siiZSMm5D0mxiCdgpaVZLg\Url\dummy.pdf" />
-    <File Id="6158" RelativePath="adam\FileList\g90OD9I_KkSQw80uyjtd6g\FileLink\dummy.pdf" />
-    <File Id="6159" RelativePath="adam\FileList\g-zrrIfbQUWFCA958qdUbA\FileLink\dummy.pdf" />
-    <File Id="6269" RelativePath="adam\Files\OYPxju-z_UioLtnVZwKdCg\FileLink\DemoFileRootFileName.txt" />
+    <File Id="6575" RelativePath="adam\Files\g90OD9I_KkSQw80uyjtd6g\Url\dummy.pdf" />
+    <File Id="6576" RelativePath="adam\Files\g-zrrIfbQUWFCA958qdUbA\Url\dummy.pdf" />
+    <File Id="6577" RelativePath="adam\Files\OYPxju-z_UioLtnVZwKdCg\Url\dummy1.pdf" />
     <File Id="6243" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFileRootFileName.txt" />
     <File Id="6254" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFolderRoot\DemoFileWord.docx" />
     <File Id="6245" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFolderRoot\DemoImageFileName.jpg" />
@@ -1119,18 +1053,22 @@
     <File Id="6252" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFolderRoot\DemoFolder1\DemoFile1.2.txt" />
     <File Id="6250" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFolderRoot\DemoFolder2\DemoFile2.1.txt" />
     <File Id="6253" RelativePath="adam\Files\ePDaDf5_7UipHkRNDaYXJQ\Files\DemoFolderRoot\DemoFolder2\DemoFilePDF2.2.pdf" />
+    <File Id="6269" RelativePath="adam\Files\OYPxju-z_UioLtnVZwKdCg\FileLink\DemoFileRootFileName.txt" />
   </PortalFiles>
   <PortalFolders>
     <Folder Id="13906" RelativePath="adam/Files/siiZSMm5D0mxiCdgpaVZLg/Url/" />
-    <Folder Id="13736" RelativePath="adam/FileList/g90OD9I_KkSQw80uyjtd6g/FileLink/" />
-    <Folder Id="13738" RelativePath="adam/FileList/g-zrrIfbQUWFCA958qdUbA/FileLink/" />
-    <Folder Id="13829" RelativePath="adam/Files/OYPxju-z_UioLtnVZwKdCg/FileLink/" />
+    <Folder Id="14396" RelativePath="adam/Files/g90OD9I_KkSQw80uyjtd6g/Url/" />
+    <Folder Id="14398" RelativePath="adam/Files/g-zrrIfbQUWFCA958qdUbA/Url/" />
+    <Folder Id="14399" RelativePath="adam/Files/OYPxju-z_UioLtnVZwKdCg/Url/" />
     <Folder Id="13804" RelativePath="adam/Files/ePDaDf5_7UipHkRNDaYXJQ/Files/" />
     <Folder Id="13806" RelativePath="adam/Files/ePDaDf5_7UipHkRNDaYXJQ/Files/DemoFolderRoot/" />
     <Folder Id="13808" RelativePath="adam/Files/ePDaDf5_7UipHkRNDaYXJQ/Files/DemoFolderRoot/DemoFolder1/" />
     <Folder Id="13807" RelativePath="adam/Files/ePDaDf5_7UipHkRNDaYXJQ/Files/DemoFolderRoot/DemoFolder2/" />
+    <Folder Id="13829" RelativePath="adam/Files/OYPxju-z_UioLtnVZwKdCg/FileLink/" />
     <Folder Id="13794" RelativePath="adam/Files/" />
     <Folder Id="13797" RelativePath="adam/Files/ePDaDf5_7UipHkRNDaYXJQ/" />
+    <Folder Id="14395" RelativePath="adam/Files/g90OD9I_KkSQw80uyjtd6g/" />
+    <Folder Id="14397" RelativePath="adam/Files/g-zrrIfbQUWFCA958qdUbA/" />
     <Folder Id="13828" RelativePath="adam/Files/OYPxju-z_UioLtnVZwKdCg/" />
     <Folder Id="13905" RelativePath="adam/Files/siiZSMm5D0mxiCdgpaVZLg/" />
   </PortalFolders>

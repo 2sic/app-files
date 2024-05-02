@@ -8,9 +8,9 @@ CMS Simple File List.
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Files v1.03 requires 2sxc v17.07.00
+| 2sxc                | ✅    | requires 2sxc v17.07.00
 | Dnn                 | ✅    | For v9.6.1+
-| Oqtane              | ✅    | Requires v3.04+
+| Oqtane              | ✅    | Requires v5.00
 | No jQuery           | ✅    | Since v 2.01
 | Source & License    | ✅    | included, MIT
 | Best Practices      | ✅    | Uses v16.02 conventions
@@ -46,3 +46,4 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * v02.17.00 2024-04
   * strong Typed
   * Auto Generated Class
+  
